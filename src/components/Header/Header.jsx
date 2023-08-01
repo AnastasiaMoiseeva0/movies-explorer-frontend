@@ -1,4 +1,5 @@
 import projectLogo from "../../images/logo.svg";
+import './Header.css'
 
 function Header({children}) {
   return (
