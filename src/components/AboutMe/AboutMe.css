@@ -1,0 +1,157 @@
+.about-me {
+  padding-top: 70px;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me {
+    padding-top: 90px;
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me {
+    padding-top: 110px;
+    padding-right: 70px;
+    padding-left: 70px;
+  }
+}
+
+.about-me__student-info {
+  padding-top: 60px;
+  color: #fff;
+  display: grid;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__student-info {
+    padding-top: 66px;
+    grid-template-columns: 364px 1fr;
+    column-gap: 49px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+    .about-me__student-info {
+      grid-template-columns: 600px 1fr;
+      column-gap: 270px;
+    }
+}
+
+.about-me__photo {
+  max-width: 292px;
+  height: 100%;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__photo {
+    max-width: 255px;
+    order: 2;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me__photo {
+    max-width: 270px;
+  }
+}
+
+.about-me__student-name {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: normal;
+  font-weight: 400;
+  font-size: 30px;
+  padding-top: 40px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__student-name {
+    font-size: 40px;
+    padding-top: 0px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me__student-name {
+    font-size: 50px;
+    line-height: 58px;
+  }
+}
+
+.about-me__profession {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 16px;
+  font-weight: 500;
+  font-size: 11px;
+  padding-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__profession {
+    font-size: 12px;
+    line-height: 18px;
+    padding-top: 16px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-me__profession {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.about-me__description {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    line-height: 16px;
+    font-weight: 500;
+    font-size: 11px;
+    padding-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .about-me__description {
+      font-size: 12px;
+      line-height: 18px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .about-me__description {
+      font-size: 14px;
+      line-height: 22px;
+      padding-top: 26px;
+    }
+}
+
+.about-me__link {
+    margin: 0;
+    font-family: "Inter", Arial, sans-serif;
+    line-height: normal;
+    font-weight: 500;
+    font-size: 14px;
+    padding-top: 40px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+    .about-me__link {
+        padding-top: 87px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .about-me__link {
+      padding-top: 99px;
+    }
+}
