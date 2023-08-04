@@ -2,7 +2,6 @@
   border: none;
   margin: 0;
   padding: 0;
-  width: 100%;
 }
 
 button:hover {
@@ -16,20 +15,30 @@ button:hover {
   line-height: 16px;
   color: #fff;
   text-align: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 @media screen and (min-width: 768px) {
   .button_type_text-white {
     font-size: 12px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+  }
+}
+
+.button_type_text-black {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  color: #000;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .button_type_text-black {
+    font-size: 12px;
   }
 }
 
 .button_type_color-black {
-  border-radius: 6px;
   background-color: #303030;
   margin-right: 6px;
 }
@@ -42,4 +51,33 @@ button:hover {
 
 .button_type_color-black:last-child {
   margin-right: 0;
+}
+
+.button_type_color-green {
+  background-color: #3DDC84;
+  min-width: 54px;
+  height: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .button_type_color-green {
+    min-width: 76px;
+  }
+}
+
+.button_type_border-small {
+  border-radius: 3px;
+}
+
+.button_type_border-medium {
+  border-radius: 6px;
+}
+
+.button_type_border-large {
+  border-radius: 20px;
+}
+
+.button_type_transparent-icon {
+  background-color: transparent;
+  width: 44px;
 }

@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <div className="page">
-        <Header />
+        <Header isAuthorization={true}/>
         <Main />
         <Footer />
       </div>

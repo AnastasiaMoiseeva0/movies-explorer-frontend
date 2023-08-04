@@ -1,15 +1,22 @@
 .navigation {
-    box-sizing: border-box;
-    align-self: center;
-    max-width: 258px;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding-bottom: 17px;
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 17px;
+}
+
+.navigation__button {
+  min-width: 82px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 @media screen and (min-width: 768px) {
-    .navigation {
-      max-width: 308px;
-    }
+  .navigation__button {
+    min-width: 96px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
+}
