@@ -50,7 +50,7 @@ function Header({ isAuthorization }) {
             text="Войти"
             textColor="black"
             buttonColor="green"
-            buttonBorder="m"
+            buttonBorder="s"
           />
         </div>
       )}
