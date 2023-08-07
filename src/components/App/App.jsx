@@ -2,14 +2,16 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import Movies from "../Movies/Movies";
 
 function App() {
   return (
     <div className="App">
       <div className="page">
-        <Header isAuthorization={true}/>
+        <Header isAuthorization={false}/>
         <Main />
         <Footer />
+        <Movies />
       </div>
     </div>
   );

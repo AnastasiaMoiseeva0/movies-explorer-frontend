@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 768px) {
   .about-project {
-    padding-top: 90px;
+    padding-top: 93px;
     padding-right: 50px;
     padding-left: 50px;
   }
@@ -27,13 +27,14 @@
 @media screen and (min-width: 768px) {
   .about-project__info {
     grid-template-columns: repeat(2, 318px);
-    justify-content: space-between;
+    column-gap: 34px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-project__info {
     grid-template-columns: repeat(2, 480px);
+    column-gap: 109px;
   }
 }
 
@@ -57,7 +58,7 @@
 
 .about-project__subtitle {
   margin: 0;
-  padding-top: 60px;
+  padding-top: 61px;
   padding-bottom: 16px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
@@ -69,14 +70,14 @@
 @media screen and (min-width: 768px) {
   .about-project__subtitle {
     font-size: 20px;
-    padding-top: 70px;
+    padding-top: 72px;
     padding-bottom: 22px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-project__subtitle {
-    padding-bottom: 26px;
+    padding-bottom: 27px;
   }
 }
 
