@@ -56,6 +56,8 @@
 
 .search-form__button {
   background-image: url("../../images/search-button.svg");
+  width: 44px;
+  background-color: transparent;
   background-repeat: no-repeat;
   margin-left: 10px;
 }

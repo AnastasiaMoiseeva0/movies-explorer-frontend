@@ -28,13 +28,10 @@ function Header({ isAuthorization }) {
       ) : null}
       {isAuthorization ? (
         <div className="header__account-navigation">
-          <Button className="header__menu" buttonImg="transparent-icon" />
+          <Button className="header__menu" />
           <Button
             className="header__account"
             text="Аккаунт"
-            textColor="white"
-            buttonColor="black"
-            buttonBorder="l"
           />
         </div>
       ) : (
@@ -48,9 +45,6 @@ function Header({ isAuthorization }) {
           <Button
             className="header__login"
             text="Войти"
-            textColor="black"
-            buttonColor="green"
-            buttonBorder="s"
           />
         </div>
       )}

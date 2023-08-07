@@ -12,7 +12,7 @@ function SearchForm() {
           type="text"
           name="searchInput"
         ></input>
-        <Button className="search-form__button" buttonImg="transparent-icon" />
+        <Button className="search-form__button" />
       </div>
       <FilterCheckbox />
     </section>
