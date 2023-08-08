@@ -23,7 +23,20 @@
   }
 }
 
+.movie__img:hover ~ .movie__save-button{
+  display: flex;
+}
+
+.movie__img:hover ~ .movie__saved-button{
+  display: flex;
+}
+
+.movie__img:hover ~ .movie__delete-button{
+  display: flex;
+}
+
 .movie__save-button {
+  display: none;
   background-color: #313131;
   border-radius: 30px;
   margin: 0;
@@ -47,6 +60,7 @@
 }
 
 .movie__saved-button {
+  display: none;
   background-image: url("../../images/movie-save.svg");
   width: 21px;
   height: 21px;
@@ -59,6 +73,25 @@
 
 @media screen and (min-width: 768px) {
   .movie__saved-button {
+    right: 14px;
+    top: 14px;
+  }
+}
+
+.movie__delete-button {
+  display: none;
+  background-image: url("../../images/movie-delete-save.svg");
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .movie__delete-button {
     right: 14px;
     top: 14px;
   }
