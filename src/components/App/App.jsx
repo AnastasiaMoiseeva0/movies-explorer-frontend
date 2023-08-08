@@ -4,6 +4,7 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
+import Register from "../Register/Register";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Footer />
         <Movies />
         <SavedMovies />
+        <Register isValidate={false}/>
       </div>
     </div>
   );

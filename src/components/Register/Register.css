@@ -1,0 +1,168 @@
+.register {
+  margin: auto;
+}
+
+.register__logo {
+  align-self: center;
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .register__logo {
+    align-self: flex-start;
+    padding-bottom: 40px;
+    padding-top: 232px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register__logo {
+    padding-top: 70px;
+  }
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 260px;
+}
+
+@media screen and (min-width: 768px) {
+  .register__form {
+    width: 396px;
+  }
+}
+
+.register__title {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  color: #fff;
+  line-height: normal;
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .register__title {
+    padding-bottom: 40px;
+  }
+}
+
+.register__subtitle {
+  margin: 0;
+  text-align: start;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #8b8b8b;
+  line-height: normal;
+  padding-bottom: 10px;
+}
+
+.register__field {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  margin-bottom: 20px;
+  background-color: #2f2f2f;
+}
+
+.register__field:last-of-type {
+  margin-bottom: 0px;
+}
+
+.register__field_type_red {
+  color: #ee3465;
+}
+
+.register__button {
+  margin: 0;
+  margin-top: 157px;
+  background-color: #4285f4;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .register__button {
+    margin-top: 69px;
+  }
+}
+
+.register__signin {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 14px;
+  padding-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+  .register__signin {
+    padding-top: 16px;
+    padding-bottom: 232px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .register__signin {
+    padding-bottom: 70px;
+  }
+}
+
+.register__signin-title {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #8b8b8b;
+  padding-right: 7px;
+}
+
+@media screen and (min-width: 768px) {
+  .register__signin-title {
+    font-size: 14px;
+    padding-right: 6px;
+  }
+}
+
+.register__login-link {
+  text-decoration: none;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #4285f4;
+}
+
+@media screen and (min-width: 768px) {
+  .register__login-link {
+    font-size: 14px;
+  }
+}
+
+.register-error {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #ee3465;
+  padding-top: 10px;
+}
