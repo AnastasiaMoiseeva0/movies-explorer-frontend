@@ -87,7 +87,6 @@
 
 .register__button {
   margin: 0;
-  margin-top: 157px;
   background-color: #4285f4;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 500;
@@ -100,8 +99,12 @@
   width: 100%;
 }
 
+.register__button_type_signup {
+  margin-top: 157px;
+}
+
 @media screen and (min-width: 768px) {
-  .register__button {
+  .register__button_type_signup {
     margin-top: 69px;
   }
 }

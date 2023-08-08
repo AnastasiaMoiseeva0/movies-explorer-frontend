@@ -1,0 +1,9 @@
+.register__button_type_signin {
+    margin-top: 267px;
+}
+
+@media screen and (min-width: 768px) {
+    .register__button_type_signin {
+      margin-top: 179px;
+    }
+  }

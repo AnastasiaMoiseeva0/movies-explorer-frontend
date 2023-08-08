@@ -1,24 +1,14 @@
-import "./Register.css";
+import "./Login.css";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 
-function Register({ isValidate }) {
+function Login({ isValidate }) {
   return (
     <>
       <section className="register">
         <form className="register__form">
           <Logo className="register__logo" />
-          <h2 className="register__title">Добро пожаловать!</h2>
-          <p className="register__subtitle">Имя</p>
-          <input
-            className={`register__field ${
-              isValidate ? "register__field_type_red" : ""
-            }`}
-            type="text"
-            required
-            name="name"
-          />
-          <span class="register-error"></span>
+          <h2 className="register__title">Рады видеть!</h2>
           <p className="register__subtitle">E-mail</p>
           <input
             className={`register__field ${
@@ -39,11 +29,11 @@ function Register({ isValidate }) {
             name="password"
           />
           <span class="register-error"></span>
-          <Button className="register__button register__button_type_signup" text="Зарегистрироваться" />
+          <Button className="register__button register__button_type_signin" text="Войти" />
           <div className="register__signin">
-            <p className="register__signin-title">Уже зарегистрированы?</p>
-            <a href="/sign-in" className="register__login-link">
-              Войти
+            <p className="register__signin-title">Еще не зарегистрированы</p>
+            <a href="/sign-up" className="register__login-link">
+              Регистрация
             </a>
           </div>
         </form>
@@ -52,4 +42,4 @@ function Register({ isValidate }) {
   );
 }
 
-export default Register;
+export default Login;
