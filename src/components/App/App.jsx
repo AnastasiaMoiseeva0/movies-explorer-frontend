@@ -6,6 +6,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
+import Profile from "../Profile/Profile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <SavedMovies />
         <Register isValidate={false}/>
         <Login isValidate={false}/>
+        <Profile />
       </div>
     </div>
   );
