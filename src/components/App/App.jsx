@@ -7,6 +7,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Register isValidate={false}/>
         <Login isValidate={false}/>
         <Profile />
+        <NotFoundPage />
       </div>
     </div>
   );
