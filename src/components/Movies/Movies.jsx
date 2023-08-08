@@ -2,11 +2,11 @@ import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 
-function Movies() {
+function Movies({canDeleteMovie}) {
   return (
     <section className="movies">
         <SearchForm />
-        <MoviesCardList />
+        <MoviesCardList canDeleteMovie={false}/>
     </section>
   );
 }
