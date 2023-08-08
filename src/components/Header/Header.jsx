@@ -1,15 +1,11 @@
-import projectLogo from "../../images/logo.svg";
 import Button from "../Button/Button";
 import "./Header.css";
+import Logo from "../Logo/Logo";
 
 function Header({ isAuthorization }) {
   return (
     <header className="header">
-      <img
-        className="header__logo"
-        src={projectLogo}
-        alt="Логотип учебного проекта"
-      />
+      <Logo />
       {isAuthorization ? (
         <div className="header__account-links">
         <a
