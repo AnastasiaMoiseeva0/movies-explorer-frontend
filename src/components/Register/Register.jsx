@@ -1,6 +1,7 @@
 import "./Register.css";
 import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
+import { Link } from 'react-router-dom';
 
 function Register({ isValidate }) {
   return (
@@ -42,9 +43,9 @@ function Register({ isValidate }) {
           <Button className="register__button register__button_type_signup" text="Зарегистрироваться" />
           <div className="register__signin">
             <p className="register__signin-title">Уже зарегистрированы?</p>
-            <a href="/sign-in" className="register__login-link">
+            <Link to="/signin" className="register__login-link">
               Войти
-            </a>
+            </Link>
           </div>
         </form>
       </section>

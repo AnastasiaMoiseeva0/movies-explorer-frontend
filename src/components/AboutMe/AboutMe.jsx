@@ -1,9 +1,10 @@
 import "./AboutMe.css";
 import newStudentPhoto from "../../images/student-photo.jpeg";
+import { Link } from "react-router-dom";
 
-function AboutMe() {
+function AboutMe({innerRef}) {
   return (
-    <section className="about-me">
+    <section className="about-me" ref={innerRef}>
       <h2 className="about-project__title">Студент</h2>
       <div className="about-me__student-info">
         <img
@@ -23,12 +24,12 @@ function AboutMe() {
             pet-проектами, в ближайшем будущем хочу попробовать изучить
             дополнительные фреймворки и TS.
           </p>
-          <a
-            href="https://github.com/AnastasiaMoiseeva0"
+          <Link
+            to="https://github.com/AnastasiaMoiseeva0"
             className="about-me__link"
           >
             Github
-          </a>
+          </Link>
         </div>
       </div>
     </section>
