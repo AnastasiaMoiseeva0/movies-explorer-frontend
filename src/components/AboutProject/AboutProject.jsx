@@ -1,8 +1,8 @@
 import "./AboutProject.css";
 
-function AboutProject() {
+function AboutProject({ innerRef }) {
   return (
-    <section className="about-project">
+    <section className="about-project" ref={innerRef}>
       <h2 className="about-project__title">О проекте</h2>
       <div className="about-project__info">
         <div>

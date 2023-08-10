@@ -1,47 +1,63 @@
+import { NavLink, Link } from "react-router-dom";
+import { useState } from "react";
 import Button from "../Button/Button";
+import Navigation from "../Navigation/Navigation";
 import "./Header.css";
 import Logo from "../Logo/Logo";
 
 function Header({ isAuthorization }) {
+  const [isNavigationOpen, setNavigationOpen] = useState(false);
+
+  function handleNavigationClick() {
+    setNavigationOpen(true);
+  }
+
+  function closeNavigate() {
+    setNavigationOpen(false);
+  }
+
   return (
     <header className="header">
       <Logo />
       {isAuthorization ? (
         <div className="header__account-links">
-        <a
-          href="https://github.com/AnastasiaMoiseeva0"
-          className="header__account-link"
-        >
-          Фильмы
-        </a>
-        <a
-          href="https://github.com/AnastasiaMoiseeva0"
-          className="header__account-link"
-        >
-          Сохраненные фильмы
-        </a>
-      </div>
+          <NavLink
+            to="/movies"
+            className={({ isActive }) =>
+              `header__account-link ${
+                isActive ? "header__account-link_active" : ""
+              }`
+            }
+          >
+            Фильмы
+          </NavLink>
+          <NavLink
+            to="/saved-movies"
+            className={({ isActive }) =>
+              `header__account-link ${
+                isActive ? "header__account-link_active" : ""
+              }`
+            }
+          >
+            Сохраненные фильмы
+          </NavLink>
+        </div>
       ) : null}
       {isAuthorization ? (
         <div className="header__account-navigation">
-          <Button className="header__menu" />
           <Button
-            className="header__account"
-            text="Аккаунт"
+            className="header__menu"
+            onClick={() => handleNavigationClick()}
           />
+          <Link to="/profile" className="header__account">Аккаунт</Link>
+          <Navigation isOpen={isNavigationOpen} onClose={closeNavigate} />
         </div>
       ) : (
         <div className="header__navigation">
-          <a
-            href="https://github.com/AnastasiaMoiseeva0"
-            className="header__link"
-          >
+          <Link to="/profile" className="header__link">
             Регистрация
-          </a>
-          <Button
-            className="header__login"
-            text="Войти"
-          />
+          </Link>
+          <Link to="/signin" className="header__login">Войти</Link>
         </div>
       )}
     </header>

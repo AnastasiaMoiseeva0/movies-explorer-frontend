@@ -42,6 +42,7 @@
 }
 
 .header__login {
+  text-decoration: none;
   padding-top: 5px;
   padding-bottom: 5px;
   font-family: "Inter", Arial, sans-serif;
@@ -98,6 +99,7 @@
 
 @media screen and (min-width: 1280px) {
   .header__account {
+    text-decoration: none;
     display: flex;
     justify-content: center;
     min-width: 100px;
@@ -138,4 +140,8 @@
 
 .header__account-link:last-child {
   padding-right: 0px;
+}
+
+.header__account-link_active {
+  font-weight: 500;
 }

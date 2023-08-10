@@ -1,8 +1,8 @@
 import "./Techs.css";
 
-function Techs() {
+function Techs({innerRef}) {
   return (
-    <section className="techs">
+    <section className="techs" ref={innerRef}>
       <h2 className="about-project__title">Технологии</h2>
       <div className="techs__info">
         <h3 className="techs__subtitle">7 технологий</h3>

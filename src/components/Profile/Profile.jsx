@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Profile.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
@@ -34,7 +35,7 @@ function Profile() {
         </div>
         <div className="profile__list">
           <Button className="profile__edit-button" text="Редактировать" />
-          <Button className="profile__exit-button" text="Выйти из аккаунта" />
+          <Link to="/" className="profile__exit-button">Выйти из аккаунта</Link>
         </div>
       </form>
     </section>
