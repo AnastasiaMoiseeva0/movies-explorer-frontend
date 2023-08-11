@@ -5,7 +5,7 @@ function FilterCheckbox() {
     <section className="checkbox">
       <div className="checkbox__toggle">
         <input className="checkbox__button" type="checkbox" name="checkbox" checked />
-        <div class="toggler"></div>
+        <div className="toggler"></div>
       </div>
       <p className="checkbox__filter">Короткометражки</p>
     </section>

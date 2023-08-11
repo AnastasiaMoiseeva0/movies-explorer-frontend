@@ -17,7 +17,6 @@
   min-width: 82px;
   padding-top: 5px;
   padding-bottom: 5px;
-  background-color: #303030;
   margin-right: 6px;
   border-radius: 3px;
   font-family: "Inter", Arial, sans-serif;
@@ -36,4 +35,8 @@
     margin-right: 10px;
     font-size: 12px;
   }
+}
+
+.navigation__button:last-of-type {
+  margin: 0;
 }

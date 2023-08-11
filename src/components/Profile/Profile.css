@@ -79,7 +79,7 @@
   padding-bottom: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -123,4 +123,37 @@
   .profile__exit-button {
     font-size: 13px;
   }
+}
+
+.profile__save-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile__save-button {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #fff;
+  border-radius: 3px;
+  padding-top: 15px;
+  padding-bottom: 13px;
+  text-align: center;
+  min-width: 410px;
+}
+
+.profile__save-button_disabled {
+  color: #c2c2c2;
+  background-color: #f8f8f8;
+}
+
+.profile-error {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #ee3465;
+  padding-bottom: 20px;
 }

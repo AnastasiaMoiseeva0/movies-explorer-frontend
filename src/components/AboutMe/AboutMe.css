@@ -68,7 +68,7 @@
   line-height: normal;
   font-weight: 400;
   font-size: 30px;
-  padding-top: 44px;
+  padding-top: 41px;
 }
 
 @media screen and (min-width: 768px) {
@@ -99,7 +99,7 @@
   .about-me__profession {
     font-size: 12px;
     line-height: 18px;
-    padding-top: 16px;
+    padding-top: 15px;
   }
 }
 
@@ -148,12 +148,16 @@
 
 @media screen and (min-width: 768px) {
   .about-me__link {
-    padding-top: 53px;
+    padding-top: 68px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-me__link {
-    padding-top: 56px;
+    padding-top: 78px;
   }
+}
+
+.about-me__link:hover {
+  opacity: 0.7;
 }

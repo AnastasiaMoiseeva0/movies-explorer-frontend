@@ -1,11 +1,13 @@
 .register {
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .register__logo {
   align-self: center;
   padding-bottom: 50px;
-  padding-top: 50px;
+  padding-top: 56px;
 }
 
 @media screen and (min-width: 768px) {
@@ -25,14 +27,8 @@
 .register__form {
   display: flex;
   flex-direction: column;
-  margin: auto;
-  width: 260px;
-}
-
-@media screen and (min-width: 768px) {
-  .register__form {
-    width: 396px;
-  }
+  align-items: center;
+  justify-content: space-between;
 }
 
 .register__title {
@@ -43,52 +39,18 @@
   color: #fff;
   line-height: normal;
   padding-bottom: 80px;
-  text-align: center;
+  align-self: center;
 }
 
 @media screen and (min-width: 768px) {
   .register__title {
     padding-bottom: 40px;
+    align-self: flex-start;
   }
-}
-
-.register__subtitle {
-  margin: 0;
-  text-align: start;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  color: #8b8b8b;
-  line-height: normal;
-  padding-bottom: 10px;
-}
-
-.register__field {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter", Arial, sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  padding-bottom: 15px;
-  padding-top: 15px;
-  margin-bottom: 20px;
-  background-color: #2f2f2f;
-}
-
-.register__field:last-of-type {
-  margin-bottom: 0px;
-}
-
-.register__field_type_red {
-  color: #ee3465;
 }
 
 .register__button {
   margin: 0;
-  background-color: #4285f4;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 500;
   font-size: 12px;
@@ -98,6 +60,12 @@
   padding-bottom: 15px;
   border-radius: 3px;
   width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .register__button {
+    font-size: 14px;
+  }
 }
 
 .register__button_type_signup {
@@ -162,11 +130,6 @@
   }
 }
 
-.register-error {
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  color: #ee3465;
-  padding-top: 10px;
+.register__login-link:hover {
+  opacity: 0.7;
 }
