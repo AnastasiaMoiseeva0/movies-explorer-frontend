@@ -1,5 +1,5 @@
 import "./NotFoundPage.css";
-import { Link } from 'react-router-dom';
+import Button from "../Button/Button"
 import { useNavigate } from "react-router-dom";
 
 function NotFoundPage() {
@@ -15,7 +15,7 @@ function NotFoundPage() {
         <h1 className="not-found__title">404</h1>
         <p className="not-found__subtitle">Страница не найдена</p>
       </div>
-      <Link className="not-found__link" to={goBack}>Назад</Link>
+      <Button className="not-found__link" onClick={goBack} text="Назад"/>
     </div>
   );
 }
