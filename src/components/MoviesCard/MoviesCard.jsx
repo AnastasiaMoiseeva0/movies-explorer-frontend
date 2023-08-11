@@ -4,15 +4,15 @@ import Button from "../Button/Button";
 
 function MoviesCard({ isSaved, canDeleteMovie }) {
   return (
-    <article className="movie">
+    <article className="movie__container">
       <img src={movieImg} alt="Изображение фильма" className="movie__img" />
 
       {canDeleteMovie ? (
-        <Button className="movie__delete-button" />
+        <Button className="movie__delete-button" iconButton="icon" />
       ) : isSaved ? (
         <Button text="Сохранить" className="movie__save-button" />
       ) : (
-        <Button className="movie__saved-button" />
+        <Button className="movie__saved-button"  iconButton="icon" />
       )}
       <div className="movie__caption">
         <h2 className="movie__title">Книготорговцы</h2>

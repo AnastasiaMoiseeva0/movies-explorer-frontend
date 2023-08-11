@@ -3,7 +3,7 @@ import "./Profile.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
 
-function Profile() {
+function Profile({isEditProfile, isDisabled}) {
   return (
     <section className="profile">
       <Header isAuthorization={true} />
@@ -18,7 +18,7 @@ function Profile() {
               required
               name="name"
               value="Виталий"
-              disabled
+              disabled={!isEditProfile}
             />
           </div>
           <div className="profile__input">
@@ -29,13 +29,27 @@ function Profile() {
               required
               name="email"
               value="pochta@yandex.ru"
-              disabled
+              disabled={!isEditProfile}
             />
           </div>
         </div>
-        <div className="profile__list">
-          <Button className="profile__edit-button" text="Редактировать" />
-          <Link to="/" className="profile__exit-button">Выйти из аккаунта</Link>
+        <div>
+          {isEditProfile ? (
+            <div className="profile__list">
+              <span className="profile-error"></span>
+              <Button className={`profile__save-button ${isDisabled ? "profile__save-button_disabled" : ""}`} text="Сохранить" colorButton="blue"/>
+            </div>
+          ) : (
+            <div className="profile__list">
+              <Button className="profile__edit-button" text="Редактировать" />
+              <Link to="/">
+                <Button
+                  className="profile__exit-button"
+                  text="Выйти из аккаунта"
+                />
+              </Link>
+            </div>
+          )}
         </div>
       </form>
     </section>

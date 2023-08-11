@@ -1,13 +1,29 @@
 .not-found {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
+  height: 100vh;
 }
 
 .not-found__text {
-    padding-top: 15%;
-    padding-bottom: 15%;
+  padding-top: 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .not-found__text {
+    padding-top: 222px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .not-found__text {
+    padding-top: 66px;
+  }
 }
 
 .not-found__title {
@@ -30,7 +46,7 @@
   font-weight: 400;
   font-size: 12px;
   color: #fff;
-  padding-top: 20px;
+  padding-top: 12px;
 }
 
 @media screen and (min-width: 768px) {
@@ -46,10 +62,22 @@
   font-weight: 400;
   font-size: 12px;
   color: #4285f4;
+  padding-bottom: 50px;
 }
 
 @media screen and (min-width: 768px) {
   .not-found__link {
     font-size: 14px;
+    padding-bottom: 222px;
   }
+}
+
+@media screen and (min-width: 1280px) {
+  .not-found__link {
+    padding-bottom: 60px;
+  }
+}
+
+.not-found__link:hover {
+  opacity: 0.7;
 }

@@ -6,7 +6,7 @@
 
 @media screen and (min-width: 768px) {
   .techs {
-    padding-top: 90px;
+    padding-top: 93px;
     background-color: #272727;
     padding-right: 50px;
     padding-left: 50px;
@@ -34,14 +34,14 @@
   padding-bottom: 27px;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
-  font-size: 30px;
+  font-size: 28px;
   color: #fff;
   line-height: normal;
 }
 
 @media screen and (min-width: 768px) {
   .techs__subtitle {
-    font-size: 50px;
+    font-size: 47px;
     line-height: 58px;
     padding-top: 80px;
     padding-bottom: 22px;
@@ -50,7 +50,7 @@
 
 @media screen and (min-width: 1280px) {
   .techs__subtitle {
-    padding-top: 93px; 
+    padding-top: 90px; 
     padding-bottom: 26px;
   }
 }
@@ -60,14 +60,14 @@
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
-  font-size: 11px;
+  font-size: 10px;
   color: #fff;
   line-height: 16px;
 }
 
 @media screen and (min-width: 768px) {
   .techs__description {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 18px;
     max-width: 460px;
   }
@@ -75,7 +75,7 @@
 
 @media screen and (min-width: 1280px) {
   .techs__description {
-    font-size: 14px;
+    font-size: 13px;
     line-height: 20px;
   }
 }
@@ -84,11 +84,11 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-  padding-top: 50px;
+  padding-top: 49px;
   padding-bottom: 70px;
   display: grid;
   grid-template-columns: repeat(2, 84px);
-  gap: 10px;
+  gap: 7px;
 }
 
 @media screen and (min-width: 768px) {
@@ -96,6 +96,7 @@
     padding-top: 83px;
     padding-bottom: 90px;
     grid-template-columns: repeat(7, 84px);
+    gap: 10px;
   }
 }
 

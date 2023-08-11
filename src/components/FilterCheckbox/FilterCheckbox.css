@@ -1,5 +1,4 @@
 .checkbox {
-  padding-top: 46px;
   padding-bottom: 39px;
   border-bottom: solid 1px #424242;
   display: flex;
@@ -9,25 +8,17 @@
   margin-bottom: 10px;
 }
 
-@media screen and (min-width: 768px) {
-  .checkbox {
-    padding-top: 40px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  .checkbox {
-    padding-top: 28px;
-  }
-}
-
 .toggler {
-    display: block;
-    content: " ";
-    background-image: url("../../images/toggle-button.svg");
-    background-repeat: no-repeat;
-    width: 36px;
-    height: 20px;
+  display: block;
+  content: " ";
+  background-image: url("../../images/toggle-button.svg");
+  background-repeat: no-repeat;
+  width: 36px;
+  height: 20px;
+}
+
+.toggler:hover {
+  opacity: 0.8;
 }
 
 input:checked ~ .toggler {

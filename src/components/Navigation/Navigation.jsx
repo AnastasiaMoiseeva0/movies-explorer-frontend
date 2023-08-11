@@ -6,7 +6,7 @@ function Navigation({ isOpen, onClose }) {
   return (
     <div className={`menu ${isOpen ? "menu_opened" : ""}`} onClick={onClose}>
       <div className="main__content">
-        <Button className="menu__close"/>
+        <Button className="menu__close" iconButton="icon"/>
         <nav className="menu__list">
             <NavLink to="/" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Главная</NavLink>
             <NavLink to="/movies" className={({isActive}) => `menu__link ${isActive ? "menu__link_active" : ""}`}>Фильмы</NavLink>

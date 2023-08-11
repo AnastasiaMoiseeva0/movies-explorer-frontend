@@ -25,13 +25,13 @@
 }
 
 @media screen and (min-width: 768px) {
-  .search-form {
-    padding-bottom: 40px;
+  .search-form__content {
+    padding-bottom: 42px;
   }
 }
 
 @media screen and (min-width: 1280px) {
-  .search-form {
+  .search-form__content {
     padding-bottom: 26px;
   }
 }
@@ -46,6 +46,12 @@
   font-weight: 400;
   line-height: 18px;
   padding: 13px;
+}
+
+@media screen and (min-width: 768px) {
+  .search-form__input {
+    padding: 15px 20px 15px 20px;
+  }
 }
 
 @media screen and (min-width: 1280px) {

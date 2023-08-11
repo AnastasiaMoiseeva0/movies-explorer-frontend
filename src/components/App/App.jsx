@@ -15,9 +15,9 @@ function App() {
     <div className="App">
       <div className="page">
         <Routes>
-          <Route path="/signup" element={<Register isValidate={false}/>} />
-          <Route path="/signin" element={<Login isValidate={false} />} />
-          <Route path="/profile" element={<Profile isValidate={false} />} />
+          <Route path="/signup" element={<Register/>} />
+          <Route path="/signin" element={<Login/>} />
+          <Route path="/profile" element={<Profile isEditProfile={false} isDisabled={false} />} />
           <Route path="/" element={<Main />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/saved-movies" element={<SavedMovies />} />
