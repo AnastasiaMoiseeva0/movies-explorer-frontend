@@ -14,9 +14,9 @@ function Main() {
   const aboutMeRef = useRef(null);
 
   return (
-    <main>
-      <section className="main">
-        <Header isAuthorization={false}/>
+    <>
+      <Header isAuthorization={false} />
+      <main className="main">
         <Promo
           onProjectClick={() => {
             aboutProjectRef.current.scrollIntoView({ behavior: "smooth" });
@@ -32,9 +32,9 @@ function Main() {
         <Techs innerRef={techsRef} />
         <AboutMe innerRef={aboutMeRef} />
         <Portfolio />
-        <Footer />
-      </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }
 

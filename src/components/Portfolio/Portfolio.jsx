@@ -7,6 +7,7 @@ function Portfolio() {
       <h2 className="portfolio__title">Портфолио</h2>
       <nav className="portfolio__navigation">
         <a
+          target="Статичный сайт"
           href="https://github.com/AnastasiaMoiseeva0/how-to-learn"
           className="portfolio__link"
         >
@@ -18,6 +19,7 @@ function Portfolio() {
           ></img>
         </a>
         <a
+          target="Адаптивный сайт"
           href="https://github.com/AnastasiaMoiseeva0/russian-travel"
           className="portfolio__link"
         >
@@ -29,6 +31,7 @@ function Portfolio() {
           ></img>
         </a>
         <a
+          target="Одностраничное приложение"
           href="https://github.com/AnastasiaMoiseeva0/react-mesto-api-full-gha"
           className="portfolio__link"
         >

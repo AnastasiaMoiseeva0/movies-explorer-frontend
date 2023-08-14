@@ -6,12 +6,14 @@ import Footer from "../Footer/Footer";
 
 function Movies() {
   return (
-    <section className="movies">
-        <Header isAuthorization={true} />
+    <>
+      <Header isAuthorization={true} />
+      <main>
         <SearchForm />
-        <MoviesCardList canDeleteMovie={false}/>
-        <Footer />
-    </section>
+        <MoviesCardList canDeleteMovie={false} />
+      </main>
+      <Footer />
+    </>
   );
 }
 

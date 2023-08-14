@@ -1,22 +1,37 @@
 .about-me {
-  padding-top: 70px;
-  padding-left: 14px;
-  padding-right: 14px;
+  margin: 70px auto 0px auto;
+  max-width: calc(320px - 28px);
 }
 
 @media screen and (min-width: 768px) {
   .about-me {
-    padding-top: 90px;
-    padding-right: 50px;
-    padding-left: 50px;
+    margin: 90px auto 0px auto;
+    max-width: calc(768px - 100px);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-me {
-    padding-top: 110px;
-    padding-right: 70px;
-    padding-left: 70px;
+    margin: 110px auto 0px auto;
+    max-width: calc(1280px - 140px);
+  }
+}
+
+.about-me__title {
+  margin: 0;
+  padding-bottom: 29px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 17px;
+  line-height: normal;
+  border-bottom: solid 1px #dadada;
+}
+
+@media screen and (min-width: 768px) {
+  .about-me__title {
+    font-size: 21px;
+    padding-bottom: 23px;
   }
 }
 

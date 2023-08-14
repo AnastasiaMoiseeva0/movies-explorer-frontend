@@ -1,24 +1,23 @@
 .promo {
   background-color: #272727;
   border-radius: 10px;
-  margin: 14px 14px 0px 14px;
+  margin: 14px auto 0px auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: calc(100% - 28px);
+  max-width: calc(320px - 28px);
 }
 
 @media screen and (min-width: 768px) {
   .promo {
-    margin: 20px 20px 0px 20px;
-    width: calc(100% - 40px);
+    margin-top: 20px;
+    max-width: calc(768px - 40px);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .promo {
-    margin: 20px 40px 0px 40px;
-    width: calc(100% - 80px);
+    max-width: calc(1280px - 80px);
   }
 }
 
