@@ -8,12 +8,9 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import Navigation from "../Navigation/Navigation";
 
 function App() {
   return (
-    <div className="App">
-      <div className="page">
         <Routes>
           <Route path="/signup" element={<Register/>} />
           <Route path="/signin" element={<Login/>} />
@@ -23,9 +20,6 @@ function App() {
           <Route path="/saved-movies" element={<SavedMovies />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        <Navigation />
-      </div>
-    </div>
   );
 }
 

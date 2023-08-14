@@ -5,14 +5,16 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 function SavedMovies() {
-    return(
-        <section>
-        <Header isAuthorization={true} />
+  return (
+    <>
+      <Header isAuthorization={true} />
+      <main>
         <SearchForm />
-        <MoviesCardList canDeleteMovie={true}/>
-        <Footer />
-        </section>
-    )
+        <MoviesCardList canDeleteMovie={true} />
+      </main>
+      <Footer />
+    </>
+  );
 }
 
 export default SavedMovies;

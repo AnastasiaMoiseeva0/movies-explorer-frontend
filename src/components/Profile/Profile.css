@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: auto;
-  width: 260px;
+  margin: 0 auto;
+  max-width: calc(320px - 60px);
 }
 
 @media screen and (min-width: 768px) {
   .profile__form {
-    width: 410px;
+    max-width: calc(768px - 358px);
   }
 }
 

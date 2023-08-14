@@ -1,6 +1,5 @@
 import "./AboutMe.css";
 import newStudentPhoto from "../../images/student-photo.jpeg";
-import { Link } from "react-router-dom";
 
 function AboutMe({innerRef}) {
   return (
@@ -23,12 +22,13 @@ function AboutMe({innerRef}) {
             pet-проектами, в ближайшем будущем хочу попробовать изучить
             дополнительные фреймворки и TS.
           </p>
-          <Link
-            to="https://github.com/AnastasiaMoiseeva0"
+          <a
+            href="https://github.com/AnastasiaMoiseeva0"
             className="about-me__link"
+            target="Github"
           >
             Github
-          </Link>
+          </a>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import "./Input.css";
 
-function Input({ text, type, errorName, isValidate, isRequired, name }) {
+function Input({ text, type, errorName, isValidate, name, minlength, maxlength }) {
   return (
     <div className="input">
       <p className="input__subtitle">{text}</p>
@@ -9,8 +9,10 @@ function Input({ text, type, errorName, isValidate, isRequired, name }) {
           isValidate ? "input__field_type_red" : ""
         }`}
         type={type}
-        required={isRequired}
         name={name}
+        minlength={minlength}
+        maxlength={maxlength}
+        required
       />
       <span className={`input__error ${
           isValidate ? "input__error_active" : ""

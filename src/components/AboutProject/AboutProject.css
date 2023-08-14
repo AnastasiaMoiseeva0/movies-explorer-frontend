@@ -1,27 +1,25 @@
 .about-project {
-  padding-top: 70px;
-  padding-right: 18px;
-  padding-left: 18px;
+  margin: 70px auto 0 auto;
+  max-width: calc(320px - 36px);
 }
 
 @media screen and (min-width: 768px) {
   .about-project {
-    padding-top: 93px;
-    padding-right: 50px;
-    padding-left: 50px;
+    margin: 90px auto 0 auto;
+    max-width: calc(768px - 100px);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-project {
-    padding-top: 110px;
-    padding-right: 70px;
-    padding-left: 70px;
+    margin: 110px auto 0 auto;
+    max-width: calc(1280px - 140px);
   }
 }
 
 .about-project__info {
   display: grid;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -33,8 +31,8 @@
 
 @media screen and (min-width: 1280px) {
   .about-project__info {
-    grid-template-columns: repeat(2, 515px);
-    column-gap: 75px;
+    grid-template-columns: repeat(2, 552px);
+    column-gap: 37px;
   }
 }
 

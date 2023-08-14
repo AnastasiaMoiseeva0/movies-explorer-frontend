@@ -5,8 +5,9 @@ import Button from "../Button/Button";
 
 function Profile({isEditProfile, isDisabled}) {
   return (
-    <section className="profile">
-      <Header isAuthorization={true} />
+    <>
+    <Header isAuthorization={true} />
+    <main className="profile">
       <form className="profile__form">
         <h2 className="profile__title">Привет, Виталий!</h2>
         <div>
@@ -15,6 +16,8 @@ function Profile({isEditProfile, isDisabled}) {
             <input
               className="profile__field"
               type="text"
+              maxlength="30"
+              minlength="2"
               required
               name="name"
               value="Виталий"
@@ -52,7 +55,8 @@ function Profile({isEditProfile, isDisabled}) {
           )}
         </div>
       </form>
-    </section>
+    </main>
+    </>
   );
 }
 

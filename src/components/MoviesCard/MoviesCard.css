@@ -1,4 +1,4 @@
-.movie {
+.movie__container {
   position: relative;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .movie__saved-button {
-  display: none;
+  display: none; 
   background-image: url("../../images/movie-save.svg");
   width: 21px;
   height: 21px;

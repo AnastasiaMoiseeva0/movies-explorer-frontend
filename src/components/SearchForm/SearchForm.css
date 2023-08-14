@@ -1,19 +1,17 @@
 .search-form {
-  padding-left: 14px;
-  padding-right: 14px;
+  margin: 0 auto;
+  max-width: calc(320px - 28px);
 }
 
 @media screen and (min-width: 768px) {
   .search-form {
-    padding-left: 30px;
-    padding-right: 30px;
+    max-width: calc(768px - 60px);
   }
 }
 
 @media screen and (min-width: 1280px) {
   .search-form {
-    padding-left: 70px;
-    padding-right: 70px;
+    max-width: calc(1280px - 140px);
   }
 }
 

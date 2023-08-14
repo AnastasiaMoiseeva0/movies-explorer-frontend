@@ -6,7 +6,6 @@ function MoviesCard({ isSaved, canDeleteMovie }) {
   return (
     <article className="movie__container">
       <img src={movieImg} alt="Изображение фильма" className="movie__img" />
-
       {canDeleteMovie ? (
         <Button className="movie__delete-button" iconButton="icon" />
       ) : isSaved ? (
