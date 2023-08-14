@@ -8,7 +8,7 @@
   margin-bottom: 10px;
 }
 
-.checkbox__toggle_active {
+.checkbox__toggle-active {
   display: block;
   content: " ";
   background-image: url("../../images/toggle-button.svg");
@@ -17,11 +17,11 @@
   height: 20px;
 }
 
-.checkbox__toggle_active:hover {
+.checkbox__toggle-active:hover {
   opacity: 0.8;
 }
 
-input:checked ~ .checkbox__toggle_active {
+input:checked ~ .checkbox__toggle-active {
   display: block;
   background-image: url("../../images/toggle-button-active.svg");
 }

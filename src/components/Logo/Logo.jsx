@@ -4,7 +4,7 @@ import projectLogo from "../../images/logo.svg";
 function Logo({className}) {
     return(
         <img
-        className={`header__logo
+        className={`logo
         ${className}
       }`}
         src={projectLogo}

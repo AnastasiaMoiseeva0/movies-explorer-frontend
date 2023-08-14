@@ -8,6 +8,24 @@
   }
 }
 
+.techs__title {
+  margin: 0;
+  padding-bottom: 29px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 17px;
+  line-height: normal;
+  border-bottom: solid 1px #dadada;
+}
+
+@media screen and (min-width: 768px) {
+  .techs__title {
+    font-size: 21px;
+    padding-bottom: 23px;
+  }
+}
+
 .techs__content {
   margin: 0 auto;
   padding-top: 70px;

@@ -8,7 +8,7 @@ function Movies() {
   return (
     <>
       <Header isAuthorization={true} />
-      <main className="movies">
+      <main>
         <SearchForm />
         <MoviesCardList canDeleteMovie={false} />
       </main>

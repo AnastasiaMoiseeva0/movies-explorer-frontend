@@ -4,7 +4,7 @@ import newStudentPhoto from "../../images/student-photo.jpeg";
 function AboutMe({innerRef}) {
   return (
     <section className="about-me" ref={innerRef}>
-      <h2 className="about-project__title">Студент</h2>
+      <h2 className="about-me__title">Студент</h2>
       <div className="about-me__student-info">
         <img
           className="about-me__photo"
