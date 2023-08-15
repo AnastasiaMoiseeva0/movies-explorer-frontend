@@ -3,13 +3,6 @@
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  max-width: 320px;
-}
-
-@media screen and (min-width: 768px) {
-  .register {
-    max-width: 768px;
-  }
 }
 
 @media screen and (min-width: 1280px) {
@@ -19,6 +12,7 @@
 }
 
 .register__logo {
+  height: 100%;
   align-self: center;
   padding-bottom: 50px;
   padding-top: 56px;

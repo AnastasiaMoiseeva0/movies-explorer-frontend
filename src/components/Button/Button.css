@@ -13,10 +13,6 @@ button:hover {
   background-size: cover;
 }
 
-.button_type_green {
-  background-color: #3DDC84;
-}
-
 .button_type_blue {
   background-color: #4285F4;
 }

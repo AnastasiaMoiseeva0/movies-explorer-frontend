@@ -1,19 +1,18 @@
 .about-me {
-  margin: 70px auto 0px auto;
-  max-width: calc(320px - 28px);
+  margin: 0 auto;
+  padding: 70px 16px 0px 16px;
 }
 
 @media screen and (min-width: 768px) {
   .about-me {
-    margin: 90px auto 0px auto;
-    max-width: calc(768px - 100px);
+    padding: 90px 50px 0px 50px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-me {
-    margin: 110px auto 0px auto;
-    max-width: calc(1280px - 140px);
+    padding: 110px 70px 0px 70px;
+    max-width: 1280px;
   }
 }
 
@@ -44,36 +43,42 @@
 @media screen and (min-width: 768px) {
   .about-me__student-info {
     padding-top: 69px;
-    grid-template-columns: 364px 1fr;
+    grid-template-columns: 1fr 255px;
     column-gap: 49px;
+    margin: 0 auto;
+    width: fit-content;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-me__student-info {
-    grid-template-columns: 600px 1fr;
+    grid-template-columns: 1fr 270px;
     column-gap: 270px;
   }
 }
 
 .about-me__photo {
-  height: 352px;
+  background-image: url("../../images/student-photo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 292px;
+  height: 352px;
+  margin: 0 auto;
   border-radius: 10px;
 }
 
 @media screen and (min-width: 768px) {
   .about-me__photo {
-    height: 307px;
     width: 255px;
+    height: 307px;
     order: 2;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-me__photo {
-    height: 327px;
     width: 270px;
+    height: 327px;
   }
 }
 

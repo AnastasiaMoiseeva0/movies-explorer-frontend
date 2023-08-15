@@ -1,22 +1,20 @@
 .promo {
   background-color: #272727;
   border-radius: 10px;
-  margin: 14px auto 0px auto;
+  margin: 14px 14px 0px 14px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  max-width: calc(320px - 28px);
 }
 
 @media screen and (min-width: 768px) {
   .promo {
-    margin-top: 20px;
-    max-width: calc(768px - 40px);
+    margin: 20px 20px 0px 20px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .promo {
+    margin: 0 auto;
     max-width: calc(1280px - 80px);
   }
 }
@@ -38,9 +36,7 @@
   .promo__title {
     font-size: 37px;
     line-height: 52px;
-    padding-top: 350px;
-    padding-bottom: 314px;
-    max-width: 520px;
+    padding: 350px 50px 314px 50px;
   }
 }
 
@@ -48,9 +44,7 @@
   .promo__title {
     font-size: 46px;
     line-height: 58px;
-    padding-top: 160px;
-    padding-bottom: 151px;
-    max-width: 730px;
+    padding: 160px 180px 151px 180px;
   }
 }
 

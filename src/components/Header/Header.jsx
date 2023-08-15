@@ -49,13 +49,7 @@ function Header({ isAuthorization }) {
             className="header__menu"
             onClick={() => handleNavigationClick()}
           />
-          <Link to="/profile">
-          <Button
-              className="header__account"
-              colorButton="grey"
-              text="Аккаунт"
-          />
-          </Link>
+          <Link to="/profile" className="header__account">Аккаунт</Link>
           <Navigation isOpen={isNavigationOpen} onClose={closeNavigate} />
         </div>
       ) : (
@@ -63,13 +57,7 @@ function Header({ isAuthorization }) {
           <Link to="/profile" className="header__link">
             Регистрация
           </Link>
-          <Link to="/signin">
-            <Button
-              className="header__login"
-              colorButton="green"
-              text="Войти"
-            />
-          </Link>
+          <Link to="/signin" className="header__login">Войти</Link>
         </div>
       )}
     </header>

@@ -1,16 +1,13 @@
 import "./AboutMe.css";
-import newStudentPhoto from "../../images/student-photo.jpeg";
 
 function AboutMe({innerRef}) {
   return (
     <section className="about-me" ref={innerRef}>
       <h2 className="about-me__title">Студент</h2>
       <div className="about-me__student-info">
-        <img
+        <div
           className="about-me__photo"
-          src={newStudentPhoto}
-          alt="Фотография студента"
-        />
+        ></div>
         <div>
           <p className="about-me__student-name">Анастасия</p>
           <p className="about-me__profession">Фронтенд-разработчик, 26 лет</p>

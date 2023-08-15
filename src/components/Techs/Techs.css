@@ -27,25 +27,19 @@
 }
 
 .techs__content {
+  padding: 70px 18px 0px 18px;
   margin: 0 auto;
-  padding-top: 70px;
-  max-width: calc(320px - 36px);
 }
 
 @media screen and (min-width: 768px) {
   .techs__content {
-    margin-left: 50px;
-    margin-right: 50px;
-    padding-top: 93px;
-    max-width: 768px;
+    padding: 93px 50px 0px 50px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .techs__content {
-    margin-left: 70px;
-    margin-right: 70px;
-    padding-top: 100px;
+    padding: 100px 70px 0px 70px;
     max-width: 1280px;
   }
 }

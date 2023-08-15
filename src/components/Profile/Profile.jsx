@@ -45,12 +45,7 @@ function Profile({isEditProfile, isDisabled}) {
           ) : (
             <div className="profile__list">
               <Button className="profile__edit-button" text="Редактировать" />
-              <Link to="/">
-                <Button
-                  className="profile__exit-button"
-                  text="Выйти из аккаунта"
-                />
-              </Link>
+              <Link to="/" className="profile__exit-button">Выйти из аккаунта</Link>
             </div>
           )}
         </div>

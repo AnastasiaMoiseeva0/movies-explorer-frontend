@@ -1,12 +1,10 @@
 .about-project {
-  margin: 70px auto 0 auto;
-  max-width: calc(320px - 36px);
+  margin: 70px 18px 0 18px;
 }
 
 @media screen and (min-width: 768px) {
   .about-project {
-    margin: 90px auto 0 auto;
-    max-width: calc(768px - 100px);
+    margin: 90px 50px 0 50px;
   }
 }
 
@@ -24,14 +22,13 @@
 
 @media screen and (min-width: 768px) {
   .about-project__info {
-    grid-template-columns: repeat(2, 318px);
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 32px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .about-project__info {
-    grid-template-columns: repeat(2, 552px);
     column-gap: 37px;
   }
 }
