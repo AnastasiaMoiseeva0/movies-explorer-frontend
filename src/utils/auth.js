@@ -1,5 +1,5 @@
 import request from "./utils";
-export const BASE_URL = "https://api.amoiseeva.students.nomoreparties.sbs";
+export const BASE_URL = "http://localhost:3000";
 
 export const register = (name, email, password) => {
   return request(`${BASE_URL}/signup`,  {

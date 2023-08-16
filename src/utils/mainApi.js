@@ -45,7 +45,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: "https://api.amoiseeva.students.nomoreparties.sbs",
+  baseUrl: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
