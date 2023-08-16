@@ -1,0 +1,124 @@
+.menu {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #202020;
+  overflow: auto;
+  transition: all 300ms ease-in-out;
+  transform: translateX(100%);
+}
+
+.menu_opened {
+  visibility: visible;
+  opacity: 1;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 300ms ease-in-out;
+  transform: translateX(0);
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .menu_opened {
+    width: 520px;
+  }
+}
+
+.menu__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.menu__close {
+  background-image: url("../../images/close-button.svg");
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  align-self: end;
+  margin-top: 14px;
+  margin-right: 14px;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__close {
+    margin-top: 22px;
+    margin-right: 22px;
+  }
+}
+
+.menu__list {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__list {
+    padding-top: 109px;
+  }
+}
+
+.menu__link {
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 26px;
+  width: fit-content;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__link {
+    margin-bottom: 28px;
+  }
+}
+
+.menu__link:last-of-type {
+  margin-bottom: 0px;
+}
+
+.menu__link_active {
+  padding-bottom: 8px;
+  border-bottom: #fff 2px solid;
+  margin-bottom: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__link_active {
+    padding-bottom: 4px;
+    margin-bottom: 24px;
+  }
+}
+
+.menu__account {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  color: #fff;
+  text-align: center;
+  background-color: #303030;
+  border-radius: 20px;
+  margin-bottom: 46px;
+  min-width: 100px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__account {
+    margin-bottom: 90px;
+  }
+}

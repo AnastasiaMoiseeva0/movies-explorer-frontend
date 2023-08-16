@@ -1,0 +1,42 @@
+.navigation {
+  box-sizing: border-box;
+  align-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 17px;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation {
+    padding-bottom: 29px;
+  }
+}
+
+.navigation__button {
+  min-width: 82px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-right: 6px;
+  border-radius: 3px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  color: #fff;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation__button {
+    min-width: 96px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-right: 10px;
+    font-size: 12px;
+  }
+}
+
+.navigation__button:last-of-type {
+  margin: 0;
+}

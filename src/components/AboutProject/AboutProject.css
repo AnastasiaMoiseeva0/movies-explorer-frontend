@@ -1,0 +1,190 @@
+.about-project {
+  margin: 70px 18px 0 18px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project {
+    margin: 90px 50px 0 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project {
+    margin: 110px auto 0 auto;
+    max-width: calc(1280px - 140px);
+  }
+}
+
+.about-project__info {
+  display: grid;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__info {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__info {
+    column-gap: 37px;
+  }
+}
+
+.about-project__title {
+  margin: 0;
+  padding-bottom: 29px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  color: #fff;
+  font-size: 17px;
+  line-height: normal;
+  border-bottom: solid 1px #dadada;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__title {
+    font-size: 21px;
+    padding-bottom: 23px;
+  }
+}
+
+.about-project__subtitle {
+  margin: 0;
+  padding-top: 60px;
+  padding-bottom: 17px;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  color: #fff;
+  line-height: normal;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__subtitle {
+    font-size: 19px;
+    padding-top: 72px;
+    padding-bottom: 22px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__subtitle {
+    padding-bottom: 27px;
+  }
+}
+
+.about-project__description {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: #fff;
+  line-height: 16px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__description {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__description {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.about-project__deadline {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  padding-top: 60px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__deadline {
+    padding-top: 93px;
+    grid-template-columns: 140px 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__deadline {
+    padding-top: 110px;
+    grid-template-columns: 228px 1fr;
+  }
+}
+
+.about-project__week {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: #000;
+  line-height: normal;
+  text-align: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background-color: #3ddc84;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__week {
+    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+.about-project__weeks {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: #fff;
+  line-height: normal;
+  text-align: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  background-color: #303030;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__weeks {
+    font-size: 14px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+  }
+}
+
+.about-project__caption {
+  margin: 0;
+  padding-top: 10px;
+  text-align: center;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 11px;
+  color: #a0a0a0;
+  line-height: normal;
+  padding-bottom: 70px;
+}
+
+@media screen and (min-width: 768px) {
+  .about-project__caption {
+    font-size: 14px;
+    line-height: 17px;
+    padding-top: 14px;
+    padding-bottom: 90px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .about-project__caption {
+    padding-bottom: 110px;
+    padding-top: 17px;
+  }
+}
