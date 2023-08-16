@@ -1,7 +1,10 @@
 import React from "react";
-import { useState, useEffect, Navigate, useNavigate } from "react";
-import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import "./App.css";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { AppContext } from "../../contexts/AppContext";
 import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
@@ -13,6 +16,8 @@ import * as auth from "../../utils/auth";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,8 +28,6 @@ function App() {
           if (res) {
             setLoggedIn(true);
             navigate("/movies", { replace: true });
-          } else {
-            navigate("/signin", { replace: true });
           }
         })
         .catch(() => {
@@ -34,28 +37,40 @@ function App() {
   }, [loggedIn, navigate]);
 
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          loggedIn ? (
-            <Navigate to="/movie" replace />
-          ) : (
-            <Navigate to="/signin" replace />
-          )
-        }
-      />
-      <Route path="/signup" element={<Register />} />
-      <Route path="/signin" element={<Login />} />
-      <Route
-        path="/profile"
-        element={<Profile isEditProfile={false} isDisabled={false} />}
-      />
-      <Route path="/" element={<Main />} />
-      <Route path="/movies" element={<Movies />} />
-      <Route path="/saved-movies" element={<SavedMovies />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    <AppContext.Provider value={isLoading}>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route
+            path="/"
+            element={<Main />}
+          />
+          <Route path="/signup" element={<Register />} />
+          <Route path="/signin" element={<Login />} />
+          <Route
+            path="/movies"
+            element={
+              <ProtectedRoute loggedIn={loggedIn} element={<Movies />} />
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute
+                loggedIn={loggedIn}
+                element={<Profile isEditProfile={false} isDisabled={false} />}
+              />
+            }
+          />
+          <Route
+            path="/saved-movies"
+            element={
+              <ProtectedRoute loggedIn={loggedIn} element={<SavedMovies />} />
+            }
+          />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </CurrentUserContext.Provider>
+    </AppContext.Provider>
   );
 }
 
