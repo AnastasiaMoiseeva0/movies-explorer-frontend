@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -36,6 +36,10 @@ function App() {
     }
   }, [loggedIn, navigate]);
 
+  function handleLogin() {
+    setLoggedIn(true);
+  }
+
   return (
     <AppContext.Provider value={isLoading}>
       <CurrentUserContext.Provider value={currentUser}>
@@ -45,7 +49,7 @@ function App() {
             element={<Main />}
           />
           <Route path="/signup" element={<Register />} />
-          <Route path="/signin" element={<Login />} />
+          <Route path="/signin" element={<Login handleLogin={handleLogin}/>} />
           <Route
             path="/movies"
             element={
