@@ -1,11 +1,11 @@
 import "./MoviesCard.css";
-import movieImg from "../../images/movie-img.jpg";
 import Button from "../Button/Button";
 
-function MoviesCard({ isSaved, canDeleteMovie }) {
+function MoviesCard({ movie, isSaved, canDeleteMovie }) {
+
   return (
     <article className="movie">
-      <img src={movieImg} alt="Изображение фильма" className="movie__img" />
+      <div style={{ backgroundImage: `url(https://api.nomoreparties.co${movie.image.url})` }} className="movie__img"></div>
       {canDeleteMovie ? (
         <Button className="movie__delete-button" iconButton={true} />
       ) : isSaved ? (
@@ -14,8 +14,8 @@ function MoviesCard({ isSaved, canDeleteMovie }) {
         <Button className="movie__saved-button" iconButton={true} />
       )}
       <div className="movie__caption">
-        <h2 className="movie__title">Книготорговцы</h2>
-        <p className="movie__time">1ч 17м</p>
+        <h2 className="movie__title">{movie.nameRU}</h2>
+        <p className="movie__time">{movie.duration}</p>
       </div>
     </article>
   );

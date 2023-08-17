@@ -7,9 +7,11 @@ class MoviesApi {
   }
 
   getMovies() {
-    return request(`${this._baseUrl}/movies`, {
+    return request(`${this._baseUrl}`, {
         headers: this._headers,
-    }).then(res => res.data);
+    }).then(res => {
+      return res;
+    });
   }
 }
 
