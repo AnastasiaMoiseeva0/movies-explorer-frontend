@@ -53,7 +53,7 @@ function App() {
           <Route
             path="/movies"
             element={
-              <ProtectedRoute loggedIn={loggedIn} element={<Movies />} />
+              <ProtectedRoute loggedIn={loggedIn} element={<Movies loggedIn={loggedIn} />} />
             }
           />
           <Route
