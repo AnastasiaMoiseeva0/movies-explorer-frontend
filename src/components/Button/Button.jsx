@@ -10,6 +10,7 @@ function Button({ text, className, colorButton, iconButton, onClick }) {
         ${colorButton === "blue" ? "button_type_blue" : ""}
         ${colorButton === "grey" ? "button_type_grey" : ""}
       }`}
+      type="button"
     >
       {text}
     </button>

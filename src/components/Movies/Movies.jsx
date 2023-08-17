@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./Movies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
@@ -6,34 +6,47 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import moviesApi from "../../utils/moviesApi";
 
-function Movies({loggedIn}) {
-  const [movies, setMovies] = useState([]);
-  const [search, setSearch] = useState('');
+function Movies({ loggedIn }) {
+  const [movies, setMovies] = useState(null);
+  const [filteredMovies, setFiltredMovies] = useState([]);
 
-  useEffect(() => {
-    if(loggedIn) {
-      moviesApi.getMovies()
-        .then((movies) => {
-          setMovies(movies)
-          console.log(movies)
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+  function doSearch(value) {
+    if(!movies) {
+      loadFilms().then(() => {
+        if(movies) {
+          doSearch(value);
+        }
+      });
+
+      return;
     }
-  }, [loggedIn]);
 
- /* useEffect(() => {
-    console.log(search);
-    moviesApi.getMovies().then((movie) => setMovies([movie, ...movies]));
-  }, [search]); */
+    setFiltredMovies(
+      movies
+        ? movies.filter((movie) => {
+            return movie.nameRU.toLowerCase().includes(value.toLowerCase());
+          })
+        : []
+    );
+  }
+
+  function loadFilms() {
+    return moviesApi
+      .getMovies()
+      .then((movies) => {
+        setMovies(movies);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <>
       <Header isAuthorization={true} />
       <main>
-        <SearchForm />
-        <MoviesCardList canDeleteMovie={false} movies={movies} />
+        <SearchForm onSearch={doSearch} />
+        <MoviesCardList canDeleteMovie={false} filtredMovies={filteredMovies} />
       </main>
       <Footer />
     </>
