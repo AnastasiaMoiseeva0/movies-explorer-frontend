@@ -3,8 +3,9 @@ import Button from "../Button/Button";
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import "./SearchForm.css";
 
-function SearchForm({ onSearch}) {
-  const [value, setValue] = useState('');
+function SearchForm({ onSearch }) {
+  const [search, setSearch] = useState('');
+  const [shortFilmCheck, setShortFilmCheck] = useState('');
 
   return (
     <section className="search-form">
@@ -14,12 +15,15 @@ function SearchForm({ onSearch}) {
           placeholder="Фильм"
           type="text"
           name="searchInput"
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setSearch(e.target.value)}
           required
         ></input>
-        <Button className="search-form__button" onClick={() => onSearch(value)}/>
+        <Button className="search-form__button" onClick={() => onSearch(search, shortFilmCheck)}/>
       </form>
-      <FilterCheckbox />
+      <FilterCheckbox onChange={(shortFilmCheck) => {
+        setShortFilmCheck(shortFilmCheck);
+        onSearch(search, shortFilmCheck);
+      }}/>
     </section>
   );
 }
