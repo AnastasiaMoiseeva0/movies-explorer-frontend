@@ -3,14 +3,21 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
+import { useSearch } from "../../hooks/useSearch";
 
 function SavedMovies() {
+  const {doSearch, filteredMovies, isLoading } = useSearch({});
+
   return (
     <>
       <Header isAuthorization={true} />
       <main>
-        <SearchForm />
-        <MoviesCardList canDeleteMovie={true} />
+        <SearchForm onSearch={doSearch}/>
+        { isLoading
+          ? <Preloader />
+          :
+          <MoviesCardList canDeleteMovie={true} filtredMovies={filteredMovies} /> }
       </main>
       <Footer />
     </>

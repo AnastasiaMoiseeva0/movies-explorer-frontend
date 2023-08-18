@@ -2,6 +2,13 @@ import "./MoviesCard.css";
 import Button from "../Button/Button";
 
 function MoviesCard({ movie, isSaved, canDeleteMovie }) {
+  function getDuration() {
+    if(movie.duration < 60) {
+      return `${movie.duration % 60}м`
+    } else {
+    return `${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`
+    }
+  }
 
   return (
     <article className="movie">
@@ -15,7 +22,7 @@ function MoviesCard({ movie, isSaved, canDeleteMovie }) {
       )}
       <div className="movie__caption">
         <h2 className="movie__title">{movie.nameRU}</h2>
-        <p className="movie__time">{movie.duration}</p>
+        <p className="movie__time">{getDuration()}</p>
       </div>
     </article>
   );
