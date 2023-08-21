@@ -1,6 +1,6 @@
 import "./Button.css";
 
-function Button({ text, className, colorButton, iconButton, onClick }) {
+function Button({ text, className, colorButton, iconButton, onClick, type }) {
   return (
     <button
       onClick={onClick}
@@ -10,7 +10,7 @@ function Button({ text, className, colorButton, iconButton, onClick }) {
         ${colorButton === "blue" ? "button_type_blue" : ""}
         ${colorButton === "grey" ? "button_type_grey" : ""}
       }`}
-      type="button"
+      type={type || 'button'}
     >
       {text}
     </button>
