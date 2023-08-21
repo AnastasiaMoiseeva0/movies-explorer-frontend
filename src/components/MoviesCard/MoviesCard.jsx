@@ -1,24 +1,29 @@
 import "./MoviesCard.css";
 import Button from "../Button/Button";
 
-function MoviesCard({ movie, isSaved, canDeleteMovie }) {
+function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleSaveMovie }) {
   function getDuration() {
-    if(movie.duration < 60) {
-      return `${movie.duration % 60}м`
+    if (movie.duration < 60) {
+      return `${movie.duration % 60}м`;
     } else {
-    return `${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`
+      return `${Math.floor(movie.duration / 60)}ч ${movie.duration % 60}м`;
     }
   }
 
   return (
     <article className="movie">
-      <div style={{ backgroundImage: `url(https://api.nomoreparties.co${movie.image.url})` }} className="movie__img"></div>
+      <a href={movie.trailerLink} target="Трейлер фильма" 
+          className="movie__img"
+          style={{
+            backgroundImage: `url(${movie.image})`,
+          }}>
+      </a>
       {canDeleteMovie ? (
-        <Button className="movie__delete-button" iconButton={true} />
+        <Button className="movie__delete-button" iconButton={true} onClick={() => handleDeleteMovie(movie)}/>
       ) : isSaved ? (
-        <Button text="Сохранить" className="movie__save-button" />
-      ) : (
         <Button className="movie__saved-button" iconButton={true} />
+      ) : (
+        <Button text="Сохранить" className="movie__save-button" onClick={() => handleSaveMovie(movie)} />
       )}
       <div className="movie__caption">
         <h2 className="movie__title">{movie.nameRU}</h2>

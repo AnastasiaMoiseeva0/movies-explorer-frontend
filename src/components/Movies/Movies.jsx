@@ -5,8 +5,9 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useSearch } from "../../hooks/useSearch";
 import Preloader from "../Preloader/Preloader";
+import { useEffect } from "react";
 
-function Movies() {
+function Movies({ savedMovies, handleSaveMovie }) {
   const { doSearch, filteredMovies, isLoading } = useSearch({});
 
   return (
@@ -20,6 +21,8 @@ function Movies() {
           <MoviesCardList
             canDeleteMovie={false}
             filtredMovies={filteredMovies}
+            savedMovies={savedMovies}
+            handleSaveMovie={handleSaveMovie}
           />
         )}
       </main>
