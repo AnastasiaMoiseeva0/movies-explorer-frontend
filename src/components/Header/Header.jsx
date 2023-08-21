@@ -54,7 +54,7 @@ function Header({ isAuthorization }) {
         </div>
       ) : (
         <div className="header__navigation">
-          <Link to="/profile" className="header__link">
+          <Link to="/signup" className="header__link">
             Регистрация
           </Link>
           <Link to="/signin" className="header__login">Войти</Link>

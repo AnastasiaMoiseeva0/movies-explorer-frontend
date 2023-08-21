@@ -7,18 +7,21 @@ import { useSearch } from "../../hooks/useSearch";
 import Preloader from "../Preloader/Preloader";
 
 function Movies() {
-  const {doSearch, filteredMovies, isLoading } = useSearch({});
-
+  const { doSearch, filteredMovies, isLoading } = useSearch({});
 
   return (
     <>
       <Header isAuthorization={true} />
       <main>
-        <SearchForm onSearch={doSearch}/>
-        { isLoading
-          ? <Preloader />
-          :
-          <MoviesCardList canDeleteMovie={false} filtredMovies={filteredMovies} /> }
+        <SearchForm onSearch={doSearch} />
+        {isLoading ? (
+          <Preloader />
+        ) : (
+          <MoviesCardList
+            canDeleteMovie={false}
+            filtredMovies={filteredMovies}
+          />
+        )}
       </main>
       <Footer />
     </>

@@ -52,6 +52,7 @@ function Login({handleLogin}) {
           className="register__button register__button_type_signin"
           text="Войти"
           colorButton="blue"
+          type={'submit'}
         />
         <div className="register__signin">
           <p className="register__signin-title">Еще не зарегистрированы?</p>

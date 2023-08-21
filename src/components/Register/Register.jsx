@@ -60,6 +60,7 @@ function Register() {
             className="register__button register__button_type_signup"
             colorButton="blue"
             text="Зарегистрироваться"
+            type={'submit'}
           />
           <div className="register__signin">
             <p className="register__signin-title">Уже зарегистрированы?</p>
