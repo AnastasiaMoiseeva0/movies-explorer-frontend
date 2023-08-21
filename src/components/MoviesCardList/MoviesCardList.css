@@ -25,6 +25,15 @@
   }
 }
 
+.movies__search {
+  text-align: center;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: #8B8B8B;
+  padding-top: 40px;
+  font-size: 18px;
+}
+
 .movies__button {
   display: flex;
   justify-content: center;

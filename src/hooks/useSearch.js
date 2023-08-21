@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import moviesApi from "../utils/moviesApi";
+import { mapToSavedMovies } from "../utils/mappers";
 
 export function useSearch() {
   const [movies, setMovies] = useState(null);
@@ -17,7 +18,7 @@ export function useSearch() {
     return moviesApi
       .getMovies()
       .then((movies) => {
-        setMovies(movies);
+        setMovies(movies.map(movie => mapToSavedMovies(movie)));
       })
       .catch((error) => {
         console.log(error);

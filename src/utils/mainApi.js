@@ -13,7 +13,16 @@ class MainApi {
     };
   }
 
-  createMovies(movie) {
+  getSaveMovies() {
+    return request(`${this._baseUrl}/movies`, {
+      method: 'GET',
+      headers: this._getHeaders(),
+    }).then(res => {
+      return res.data;
+    });
+  }
+
+  saveMovies(movie) {
     return request(`${this._baseUrl}/movies`, {
       method: "POST",
       headers: this._getHeaders(),

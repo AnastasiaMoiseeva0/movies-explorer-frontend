@@ -1,15 +1,18 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
 import "./Profile.css";
 import Header from "../Header/Header";
 import Button from "../Button/Button";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
-function Profile({isEditProfile, isDisabled}) {
+function Profile({isEditProfile, isDisabled, onSignOut}) {
+  const currentUser = useContext(CurrentUserContext);
+
   return (
     <>
     <Header isAuthorization={true} />
     <main className="profile">
       <form className="profile__form">
-        <h2 className="profile__title">Привет, Виталий!</h2>
+        <h2 className="profile__title">Привет, {currentUser.name}!</h2>
         <div>
           <div className="profile__input">
             <p className="profile__subtitle">Имя</p>
@@ -20,7 +23,7 @@ function Profile({isEditProfile, isDisabled}) {
               minlength="2"
               required
               name="name"
-              value="Виталий"
+              value={currentUser.name}
               disabled={!isEditProfile}
             />
           </div>
@@ -31,7 +34,7 @@ function Profile({isEditProfile, isDisabled}) {
               type="email"
               required
               name="email"
-              value="pochta@yandex.ru"
+              value={currentUser.email}
               disabled={!isEditProfile}
             />
           </div>
@@ -45,7 +48,7 @@ function Profile({isEditProfile, isDisabled}) {
           ) : (
             <div className="profile__list">
               <Button className="profile__edit-button" text="Редактировать" />
-              <Link to="/" className="profile__exit-button">Выйти из аккаунта</Link>
+              <Button className="profile__exit-button" onClick={onSignOut} text="Выйти из аккаунта" />
             </div>
           )}
         </div>
