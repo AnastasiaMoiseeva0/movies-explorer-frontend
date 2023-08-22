@@ -72,16 +72,13 @@ function App() {
       .catch((error) => {
         console.log(error);
     });
-
   }
 
-  function handleDeleteMovie(savedMovies) {
+  function handleDeleteMovie(movie) {
     mainApi
-      .deleteMovie()
+      .deleteMovie(movie._id)
       .then(() => {
-        setSavedMovies((saveMovies) =>
-          saveMovies.filter((item) => item._id !== savedMovies._id)
-        );
+        loadSavedFilms();
       })
       .catch((err) => err);
   }
@@ -103,7 +100,6 @@ function App() {
                     loggedIn={loggedIn}
                     savedMovies={savedMovies}
                     handleSaveMovie={handleSaveMovie}
-                    handleDeleteMovie={handleDeleteMovie}
                   />
                 }
               />
@@ -126,7 +122,9 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute loggedIn={loggedIn} element={<SavedMovies savedMovies={savedMovies}/>} />
+              <ProtectedRoute loggedIn={loggedIn} element={<SavedMovies savedMovies={savedMovies} 
+              handleDeleteMovie={handleDeleteMovie}
+              />} />
             }
           />
           <Route path="*" element={<NotFoundPage />} />

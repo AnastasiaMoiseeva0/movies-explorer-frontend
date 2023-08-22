@@ -6,7 +6,7 @@ import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 import { useSearch } from "../../hooks/useSearch";
 
-function SavedMovies({ savedMovies }) {
+function SavedMovies({ savedMovies, handleDeleteMovie }) {
   const { doSearch, filteredMovies, isLoading } = useSearch({});
 
   return (
@@ -21,6 +21,7 @@ function SavedMovies({ savedMovies }) {
             canDeleteMovie={true}
             filtredMovies={savedMovies}
             savedMovies={savedMovies}
+            handleDeleteMovie={handleDeleteMovie}
           />
         )}
       </main>
