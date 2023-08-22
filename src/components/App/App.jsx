@@ -19,7 +19,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [savedMovies, setSavedMovies] = useState([]);
-  const [moviesArray, setMoviesArray] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
