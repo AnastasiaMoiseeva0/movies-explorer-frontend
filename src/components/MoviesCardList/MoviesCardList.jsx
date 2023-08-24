@@ -10,7 +10,10 @@ function MoviesCardList({
   savedMovies,
   isLoading,
   handleSaveMovie,
-  handleDeleteMovie
+  handleDeleteMovie,
+  isError,
+  isEmpty,
+  withMoreButton
 }) {
   const [visibleCards, setVisibleCards] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -44,8 +47,8 @@ function MoviesCardList({
   }
 
   useEffect(() => {
-    setVisibleCards(filtredMovies.slice(0, itemsInRow * initialRows));
-  }, [filtredMovies, itemsInRow, initialRows]);
+    setVisibleCards( withMoreButton ? filtredMovies.slice(0, itemsInRow * initialRows) : filtredMovies);
+  }, [filtredMovies, itemsInRow, initialRows, withMoreButton]);
 
   const onMoreClick = useCallback(() => {
     const itemsToAdd = windowWidth >= 1280 ? 3 : 2;
@@ -64,25 +67,30 @@ function MoviesCardList({
 
   return (
     <section className="movies">
-      {!isLoading && filtredMovies.length === 0 && (
-        <p className="movies__search">Ничего не найдено</p>
-      )}
+      {isError ?  (
+        <p className="movies__search">
+          Во время запроса произошла ошибка. Возможно, проблема с соединением
+          или сервер недоступен. Подождите немного и попробуйте ещё раз
+        </p>
+      ) : !isLoading && isEmpty ? (<p className="movies__search">Ничего не найдено</p>) : null}
       <div className="movies__list">
         {visibleCards.map((movie) => (
           <MoviesCard
-            key={movie._id}
+            key={movie.movieId}
             movie={movie}
             isSaved={savedMovies.some(
               (savedMovie) => savedMovie.movieId === movie.movieId
             )}
             canDeleteMovie={canDeleteMovie}
             handleSaveMovie={handleSaveMovie}
-            handleDeleteMovie={handleDeleteMovie}
+            handleDeleteMovie={(movie) => handleDeleteMovie(savedMovies.find(
+              (savedMovie) => savedMovie.movieId === movie.movieId
+            )?._id)}
           />
         ))}
       </div>
       <div className="movies__button">
-        {visibleCards.length < filtredMovies.length ? (
+        {withMoreButton && visibleCards.length < filtredMovies.length ? (
           <Button
             text="Ещё"
             className="movies__more-button"

@@ -27,11 +27,12 @@
 
 .movies__search {
   text-align: center;
-  margin: 0;
+  margin: 0 auto;
   font-family: "Inter", Arial, sans-serif;
   color: #8B8B8B;
-  padding-top: 40px;
+  padding-top: 70px;
   font-size: 18px;
+  max-width: 600px;
 }
 
 .movies__button {

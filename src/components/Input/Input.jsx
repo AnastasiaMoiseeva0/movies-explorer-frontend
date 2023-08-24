@@ -1,12 +1,22 @@
 import "./Input.css";
+import { useForm } from "../../hooks/useForm.js";
+import { useState } from "react";
 
-function Input({ text, type, errorName, isValidate, name, minLength, maxLength, value, onChange }) {
+function Input({ text, type, name, minLength, maxLength, value, onChange, validationMessage }) {
+  // const { invalidState } = useForm({});
+  // const [ invalidMessage, set] = useState();
+
+  // function handleChange(event) {
+  //   set(event.target.validationMessage);
+  //   onChange(event);
+  // }
+
   return (
     <div className="input">
       <p className="input__subtitle">{text}</p>
       <input
         className={`input__field ${
-          isValidate ? "input__field_type_red" : ""
+          validationMessage ? "input__field_type_red" : ""
         }`}
         type={type}
         name={name}
@@ -17,8 +27,8 @@ function Input({ text, type, errorName, isValidate, name, minLength, maxLength, 
         onChange={onChange}
       />
       <span className={`input__error ${
-          isValidate ? "input__error_active" : ""
-        }`}>{errorName}</span>
+          validationMessage ? "input__error_active" : ""
+        }`}>{validationMessage}</span>
     </div>
   );
 }

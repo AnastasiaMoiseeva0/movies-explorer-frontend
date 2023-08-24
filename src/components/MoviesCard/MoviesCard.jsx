@@ -21,7 +21,7 @@ function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleS
       {canDeleteMovie ? (
         <Button className="movie__delete-button" iconButton={true} onClick={() => handleDeleteMovie(movie)}/>
       ) : isSaved ? (
-        <Button className="movie__saved-button" iconButton={true} />
+        <Button className="movie__saved-button" iconButton={true} onClick={() => handleDeleteMovie(movie)}/>
       ) : (
         <Button text="Сохранить" className="movie__save-button" onClick={() => handleSaveMovie(movie)} />
       )}

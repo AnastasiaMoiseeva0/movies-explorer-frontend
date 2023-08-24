@@ -14,6 +14,7 @@ import Profile from "../Profile/Profile";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
 import * as auth from "../../utils/auth";
 import mainApi from "../../utils/mainApi";
+import { useCallback } from "react";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -61,8 +62,8 @@ function App() {
     navigate("/");
     setLoggedIn(false);
   }
-  
-  function loadSavedFilms() {
+
+  const loadSavedFilms = useCallback(() => {
     mainApi
       .getSaveMovies()
       .then((movies) => {
@@ -70,16 +71,20 @@ function App() {
       })
       .catch((error) => {
         console.log(error);
-    });
-  }
+      });
+  }, []);
 
-  function handleDeleteMovie(movie) {
+  const handleDeleteMovie = useCallback((id) => {
     mainApi
-      .deleteMovie(movie._id)
+      .deleteMovie(id)
       .then(() => {
         loadSavedFilms();
       })
       .catch((err) => err);
+  }, []);
+
+  function handleUpdateUser(userInfo) {
+    return mainApi.setUserInfo(userInfo).then((user) => setCurrentUser(user));
   }
 
   return (
@@ -96,9 +101,9 @@ function App() {
                 loggedIn={loggedIn}
                 element={
                   <Movies
-                    loggedIn={loggedIn}
-                    savedMovies={savedMovies}
                     handleSaveMovie={handleSaveMovie}
+                    handleDeleteMovie={handleDeleteMovie}
+                    savedMovies={savedMovies}
                   />
                 }
               />
@@ -111,8 +116,8 @@ function App() {
                 loggedIn={loggedIn}
                 element={
                   <Profile
-                    isDisabled={false}
                     onSignOut={onSignOut}
+                    onUpdateUser={handleUpdateUser}
                   />
                 }
               />
@@ -121,9 +126,15 @@ function App() {
           <Route
             path="/saved-movies"
             element={
-              <ProtectedRoute loggedIn={loggedIn} element={<SavedMovies savedMovies={savedMovies} 
-              handleDeleteMovie={handleDeleteMovie}
-              />} />
+              <ProtectedRoute
+                loggedIn={loggedIn}
+                element={
+                  <SavedMovies
+                    savedMovies={savedMovies}
+                    handleDeleteMovie={handleDeleteMovie}
+                  />
+                }
+              />
             }
           />
           <Route path="*" element={<NotFoundPage />} />
