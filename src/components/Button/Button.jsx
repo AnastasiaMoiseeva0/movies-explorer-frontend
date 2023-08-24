@@ -1,9 +1,10 @@
 import "./Button.css";
 
-function Button({ text, className, colorButton, iconButton, onClick, type }) {
+function Button({ text, className, colorButton, iconButton, onClick, type, disabled }) {
   return (
     <button
       onClick={onClick}
+      disabled={disabled}
       className={`button
         ${className}
         ${iconButton ? "button_icon" : ""}

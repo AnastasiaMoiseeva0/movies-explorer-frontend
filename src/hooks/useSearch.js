@@ -1,31 +1,44 @@
 import { useState, useEffect } from "react";
-import moviesApi from "../utils/moviesApi";
-import { mapToSavedMovies } from "../utils/mappers";
 
-export function useSearch() {
+export function useSearch({
+  loadFilmsCallback,
+  initialFilms,
+  skipFirstSearch,
+}) {
   const [movies, setMovies] = useState(null);
   const [search, setSearch] = useState(null);
   const [activeCheckbox, setActiveCheckbox] = useState(null);
   const [filteredMovies, setFiltredMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(null);
+  const [isError, setIsError] = useState(false);
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [hasFirstSearch, setHasFirstSearch] = useState(skipFirstSearch);
 
   const doSearch = (search, activeCheckbox) => {
     setSearch(search);
     setActiveCheckbox(activeCheckbox);
+    setHasFirstSearch(true);
   };
 
   const loadFilms = () => {
-    return moviesApi
-      .getMovies()
+    setIsError(false);
+
+    loadFilmsCallback()
       .then((movies) => {
-        setMovies(movies.map(movie => mapToSavedMovies(movie)));
+        setMovies(movies);
       })
       .catch((error) => {
         console.log(error);
+        setIsError(true);
+        setIsLoading(false);
       });
   };
 
   useEffect(() => {
+    if (!hasFirstSearch) {
+      return;
+    }
+
     if (search) {
       setIsLoading(true);
       if (!movies) {
@@ -34,19 +47,25 @@ export function useSearch() {
       }
     }
 
-    setFiltredMovies(
-      movies
-        ? movies
-            .filter((movie) => {
-              return movie.nameRU.toLowerCase().includes(search.toLowerCase());
-            })
-            .filter((movie) => {
-              return activeCheckbox ? movie.duration <= 40 : true;
-            })
-        : []
-    );
-    setIsLoading(false);
-  }, [movies, search, activeCheckbox]);
+    let filteredMovies = movies || [];
 
-  return { doSearch, filteredMovies, isLoading };
+    if (movies) {
+      if (search) {
+        filteredMovies = filteredMovies.filter((movie) => {
+          return movie.nameRU.toLowerCase().includes(search.toLowerCase());
+        });
+      }
+      if (activeCheckbox) {
+        filteredMovies = filteredMovies.filter((movie) => {
+          return activeCheckbox ? movie.duration <= 40 : true;
+        });
+      }
+    }
+
+    setFiltredMovies(filteredMovies);
+    setIsLoading(false);
+    setIsEmpty(filteredMovies.length === 0);
+  }, [movies, search, activeCheckbox, hasFirstSearch]);
+
+  return { doSearch, filteredMovies, isLoading, isError, isEmpty, setMovies };
 }

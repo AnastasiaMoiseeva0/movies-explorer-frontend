@@ -5,16 +5,32 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { useSearch } from "../../hooks/useSearch";
 import Preloader from "../Preloader/Preloader";
-import { useEffect } from "react";
+import moviesApi from "../../utils/moviesApi";
+import { mapToSavedMovies } from "../../utils/mappers";
 
-function Movies({ savedMovies, handleSaveMovie }) {
-  const { doSearch, filteredMovies, isLoading } = useSearch({});
+
+function Movies({ savedMovies, handleSaveMovie, handleDeleteMovie  }) {
+  const { doSearch, filteredMovies, isLoading, isError, isEmpty } = useSearch({
+    loadFilmsCallback: () => {
+      return moviesApi
+        .getMovies()
+        .then((movies) => {
+          return movies.map(movie => mapToSavedMovies(movie));
+        })
+        .then((movies) => {
+          window.localStorage.setItem('movies', JSON.stringify(movies));
+          return movies;
+        });
+    },
+    initialFilms: JSON.parse(window.localStorage.getItem('movies')),
+    
+  });
 
   return (
     <>
       <Header isAuthorization={true} />
       <main>
-        <SearchForm onSearch={doSearch} />
+        <SearchForm onSearch={doSearch} storageKey='allMovies' />
         {isLoading ? (
           <Preloader />
         ) : (
@@ -23,6 +39,10 @@ function Movies({ savedMovies, handleSaveMovie }) {
             filtredMovies={filteredMovies}
             savedMovies={savedMovies}
             handleSaveMovie={handleSaveMovie}
+            handleDeleteMovie={handleDeleteMovie}
+            isError={isError}
+            isEmpty={isEmpty}
+            withMoreButton={true}
           />
         )}
       </main>

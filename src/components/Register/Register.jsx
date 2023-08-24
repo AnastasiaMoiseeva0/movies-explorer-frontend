@@ -7,7 +7,7 @@ import * as auth from "../../utils/auth";
 import { useForm } from "../../hooks/useForm.js";
 
 function Register() {
-  const { values, handleChange } = useForm({});
+  const { values, handleChange, invalidState, isInvalid } = useForm({});
   const navigate = useNavigate();
 
   function onRegister(event) {
@@ -35,7 +35,7 @@ function Register() {
             name="name"
             maxLength="30"
             minLength="2"
-            isValidate={false}
+            validationMessage={invalidState.name}
             onChange={handleChange}
             value={values.name || ''}
           />
@@ -43,7 +43,7 @@ function Register() {
             text="E-mail"
             type="email"
             name="email"
-            isValidate={false}
+            validationMessage={invalidState.email}
             onChange={handleChange}
             value={values.email || ''}
           />
@@ -51,13 +51,14 @@ function Register() {
             text="Пароль"
             type="password"
             name="password"
-            errorName="Что-то пошло не так..."
-            isValidate={true}
+            validationMessage={invalidState.password}
             onChange={handleChange}
             value={values.password || ''}
           />
           <Button
-            className="register__button register__button_type_signup"
+            className={`register__button register__button_type_signup ${
+              isInvalid(invalidState) ? "register__button_disabled" : ""
+            }`}
             colorButton="blue"
             text="Зарегистрироваться"
             type={'submit'}

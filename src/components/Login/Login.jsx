@@ -7,7 +7,7 @@ import * as auth from "../../utils/auth";
 import { useForm } from "../../hooks/useForm.js";
 
 function Login({handleLogin}) {
- const {values, handleChange, setValues} = useForm({});
+ const {values, handleChange, setValues, invalidState, isInvalid} = useForm({});
  const navigate = useNavigate();
 
  function onLogin(event) {
@@ -38,6 +38,7 @@ function Login({handleLogin}) {
           name="email"
           isValidate={false}
           value={values.email || ''}
+          validationMessage={invalidState.email}
           onChange={handleChange}
         />
         <Input
@@ -46,10 +47,13 @@ function Login({handleLogin}) {
           name="password"
           isValidate={false}
           value={values.password || ''}
+          validationMessage={invalidState.password}
           onChange={handleChange}
         />
         <Button
-          className="register__button register__button_type_signin"
+          className={`register__button register__button_type_signup ${
+            isInvalid(invalidState) ? "register__button_disabled" : ""
+          }`}
           text="Войти"
           colorButton="blue"
           type={'submit'}
