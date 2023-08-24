@@ -12,7 +12,8 @@ function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleS
 
   return (
     <article className="movie">
-      <a href={movie.trailerLink} target="Трейлер фильма" className="movie__link">
+      <div className="movie__link">
+      <a href={movie.trailerLink} target="Трейлер фильма">
             <div className="movie__img"
             style={{
               backgroundImage: `url(${movie.image})`,
@@ -25,6 +26,7 @@ function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleS
       ) : (
         <Button text="Сохранить" className="movie__save-button" onClick={() => handleSaveMovie(movie)} />
       )}
+      </div>
       <div className="movie__caption">
         <h2 className="movie__title">{movie.nameRU}</h2>
         <p className="movie__time">{getDuration()}</p>

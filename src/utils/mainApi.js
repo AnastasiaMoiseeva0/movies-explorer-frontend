@@ -54,7 +54,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: "http://api.amoiseeva.students.nomoredomains.sbs",
+  baseUrl: "https://api.amoiseeva.students.nomoredomains.sbs",
   headers: {
     "Content-Type": "application/json",
   },
