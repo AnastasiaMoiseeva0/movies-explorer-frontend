@@ -25,15 +25,15 @@
   }
 }
 
-.movie__img:hover ~ .movie__save-button{
+.movie__link:hover ~ .movie__save-button{
   display: flex;
 }
 
-.movie__img:hover ~ .movie__saved-button{
+.movie__link:hover ~ .movie__saved-button{
   display: flex;
 }
 
-.movie__img:hover ~ .movie__delete-button{
+.movie__link:hover ~ .movie__delete-button{
   display: flex;
 }
 

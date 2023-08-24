@@ -12,11 +12,11 @@ function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleS
 
   return (
     <article className="movie">
-      <a href={movie.trailerLink} target="Трейлер фильма" 
-          className="movie__img"
-          style={{
-            backgroundImage: `url(${movie.image})`,
-          }}>
+      <a href={movie.trailerLink} target="Трейлер фильма" className="movie__link">
+            <div className="movie__img"
+            style={{
+              backgroundImage: `url(${movie.image})`,
+            }}></div>
       </a>
       {canDeleteMovie ? (
         <Button className="movie__delete-button" iconButton={true} onClick={() => handleDeleteMovie(movie)}/>

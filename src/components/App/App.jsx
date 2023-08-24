@@ -38,7 +38,8 @@ function App() {
             navigate("/movies", { replace: true });
           }
         })
-        .catch(() => {
+        .catch((e) => {
+          console.log(e);
           setLoggedIn(false);
         });
     }

@@ -4,5 +4,5 @@
 
 IP 158.160.80.42
 
-Backend https://api.amoiseeva.students.nomoreparties.sbs
-Frontend https://amoiseeva.students.nomoreparties.sbs
+Backend https://aapi.amoiseeva.students.nomoredomains.sbs
+Frontend https://amoiseeva.students.nomoredomainsicu.ru
