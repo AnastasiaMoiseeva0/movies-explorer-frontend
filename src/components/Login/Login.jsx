@@ -3,29 +3,33 @@ import Button from "../Button/Button";
 import Logo from "../Logo/Logo";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../Input/Input";
-import * as auth from "../../utils/auth";
 import { useForm } from "../../hooks/useForm.js";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useState } from "react";
 
-function Login({handleLogin}) {
- const {values, handleChange, setValues, invalidState, isInvalid} = useForm({});
- const navigate = useNavigate();
+function Login({ handleLogin }) {
+  const { values, handleChange, setValues, invalidState, isInvalid } = useForm(
+    {}
+  );
+  const [errorMessage, setErrorMessage] = useState(null);
 
- function onLogin(event) {
-  event.preventDefault();
-  if (!values.email || !values.password) {
-    return;
-  }
-  auth
-    .authorize(values.password, values.email)
-    .then((data) => {
-      if (data.token) {
+  const navigate = useNavigate();
+
+  function onLogin(event) {
+    event.preventDefault();
+    if (!values.email || !values.password) {
+      return;
+    }
+
+    handleLogin(values.password, values.email)
+      .then(() => {
         setValues({ password: "", email: "" });
-        handleLogin();
         navigate("/movies", { replace: true });
-      }
-    })
-    .catch((err) => console.log(err));
-}
+      })
+      .catch((error) => {
+        setErrorMessage('При аутентификации произошла ошибка');
+      });
+  }
 
   return (
     <main className="register">
@@ -37,7 +41,8 @@ function Login({handleLogin}) {
           type="email"
           name="email"
           isValidate={false}
-          value={values.email || ''}
+          pattern="[A-Za-zА-Яа-яЁё\s\-]"
+          value={values.email || ""}
           validationMessage={invalidState.email}
           onChange={handleChange}
         />
@@ -46,18 +51,24 @@ function Login({handleLogin}) {
           type="password"
           name="password"
           isValidate={false}
-          value={values.password || ''}
+          value={values.password || ""}
           validationMessage={invalidState.password}
           onChange={handleChange}
         />
-        <Button
-          className={`register__button register__button_type_signup ${
-            isInvalid(invalidState) ? "register__button_disabled" : ""
-          }`}
-          text="Войти"
-          colorButton="blue"
-          type={'submit'}
-        />
+        <div className="register__footer">
+          <ErrorMessage
+            message={errorMessage}
+            className="register__error"
+          ></ErrorMessage>
+          <Button
+            className={`register__button ${
+              isInvalid(invalidState) ? "register__button_disabled" : ""
+            }`}
+            text="Войти"
+            colorButton="blue"
+            type={"submit"}
+          />
+        </div>
         <div className="register__signin">
           <p className="register__signin-title">Еще не зарегистрированы?</p>
           <Link to="/signup" className="register__login-link">

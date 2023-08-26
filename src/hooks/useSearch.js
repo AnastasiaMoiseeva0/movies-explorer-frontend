@@ -28,7 +28,6 @@ export function useSearch({
         setMovies(movies);
       })
       .catch((error) => {
-        console.log(error);
         setIsError(true);
         setIsLoading(false);
       });

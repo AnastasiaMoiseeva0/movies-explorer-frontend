@@ -22,9 +22,28 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!loggedIn) {
-      auth
+  const loadSavedFilms = useCallback(() => {
+    mainApi
+      .getSaveMovies()
+      .then((movies) => {
+        setSavedMovies(movies);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const handleSaveMovie = useCallback((movie) => {
+    mainApi
+      .saveMovies(movie)
+      .then(() => {
+        loadSavedFilms();
+      })
+      .catch((err) => err);
+  }, [loadSavedFilms])
+
+  const loadUserData = useCallback(() => {
+    auth
         .getCurrentUser()
         .then((res) => {
           if (res) {
@@ -42,38 +61,29 @@ function App() {
           console.log(e);
           setLoggedIn(false);
         });
-    }
-  }, [loggedIn]);
+  }, [loadSavedFilms])
 
-  function handleLogin() {
-    setLoggedIn(true);
-  }
-
-  function handleSaveMovie(movie) {
-    mainApi
-      .saveMovies(movie)
-      .then(() => {
-        loadSavedFilms();
+  const handleLogin = useCallback((password, email) => {
+    return auth
+      .authorize(password, email)
+      .then((data) => {
+        if (data.token) {
+          loadUserData();
+        }
       })
-      .catch((err) => err);
-  }
+  }, [loadUserData])
+
+  useEffect(() => {
+    if (!loggedIn) {
+      loadUserData();
+    }
+  }, [loggedIn, loadUserData]);
 
   function onSignOut() {
     localStorage.removeItem("jwt");
     navigate("/");
     setLoggedIn(false);
   }
-
-  const loadSavedFilms = useCallback(() => {
-    mainApi
-      .getSaveMovies()
-      .then((movies) => {
-        setSavedMovies(movies);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   const handleDeleteMovie = useCallback((id) => {
     mainApi
@@ -85,7 +95,9 @@ function App() {
   }, []);
 
   function handleUpdateUser(userInfo) {
-    return mainApi.setUserInfo(userInfo).then((user) => setCurrentUser(user));
+    return mainApi
+      .setUserInfo(userInfo)
+      .then((user) => setCurrentUser(user))
   }
 
   return (
@@ -93,7 +105,7 @@ function App() {
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/signup" element={<Register />} />
+          <Route path="/signup" element={<Register handleLogin={handleLogin} />} />
           <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
           <Route
             path="/movies"

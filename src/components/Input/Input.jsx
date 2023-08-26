@@ -1,15 +1,7 @@
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./Input.css";
-import { useForm } from "../../hooks/useForm.js";
-import { useState } from "react";
 
 function Input({ text, type, name, minLength, maxLength, value, onChange, validationMessage }) {
-  // const { invalidState } = useForm({});
-  // const [ invalidMessage, set] = useState();
-
-  // function handleChange(event) {
-  //   set(event.target.validationMessage);
-  //   onChange(event);
-  // }
 
   return (
     <div className="input">
@@ -26,9 +18,9 @@ function Input({ text, type, name, minLength, maxLength, value, onChange, valida
         required
         onChange={onChange}
       />
-      <span className={`input__error ${
+      <ErrorMessage message={validationMessage} className={`input__error ${
           validationMessage ? "input__error_active" : ""
-        }`}>{validationMessage}</span>
+        }`}></ErrorMessage>
     </div>
   );
 }

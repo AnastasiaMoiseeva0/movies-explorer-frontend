@@ -35,7 +35,9 @@ function SearchForm({ onSearch, storageKey }) {
     [search]
   );
 
-  const handleSearchClick = useCallback(() => {
+  const handleSearch = useCallback((event) => {
+    event.preventDefault();
+
     validate([input.current]);
 
     if (!isInvalid()) {
@@ -51,7 +53,7 @@ function SearchForm({ onSearch, storageKey }) {
 
   return (
     <section className="search-form">
-      <form className="search-form__content">
+      <form className="search-form__content" onSubmit={(ev) => handleSearch(ev)}>
         <input
           ref={input}
           className="search-form__input"
@@ -64,8 +66,8 @@ function SearchForm({ onSearch, storageKey }) {
         ></input>
         <Button
           className="search-form__button"
-          onClick={() => handleSearchClick()}
           disabled={isInvalid()}
+          type='submit'
         />
         {isInvalid() ? (
           <span className="search-form__error">

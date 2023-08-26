@@ -80,6 +80,10 @@
   background-color: transparent;
 }
 
+.profile__field_type_red {
+  color: #ee3465;
+}
+
 .profile__list {
   padding-top: 379px;
   padding-bottom: 40px;
@@ -164,9 +168,12 @@
 
 .profile__error {
   margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-  color: #ee3465;
   padding-bottom: 20px;
+  text-align: center;
+}
+
+.profile__error-input{
+  padding-top: 10px;
+  max-width: 350px;
+  text-align: end;
 }
