@@ -75,6 +75,7 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
                   type="email"
                   required
                   name="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                   value={values.email}
                   validationMessage={invalidState.email}
                   disabled={!isEditProfile}

@@ -50,6 +50,7 @@ function Register({ handleLogin }) {
             text="E-mail"
             type="email"
             name="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             validationMessage={invalidState.email}
             onChange={handleChange}
             value={values.email || ''}

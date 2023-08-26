@@ -1,7 +1,7 @@
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./Input.css";
 
-function Input({ text, type, name, minLength, maxLength, value, onChange, validationMessage }) {
+function Input({ text, type, name, minLength, maxLength, value, onChange, validationMessage, pattern }) {
 
   return (
     <div className="input">
@@ -15,6 +15,7 @@ function Input({ text, type, name, minLength, maxLength, value, onChange, valida
         minLength={minLength}
         maxLength={maxLength}
         value={value}
+        pattern={pattern}
         required
         onChange={onChange}
       />
