@@ -80,7 +80,8 @@ function App() {
   }, [loggedIn, loadUserData]);
 
   function onSignOut() {
-    localStorage.removeItem("jwt");
+    localStorage.clear();
+    
     navigate("/");
     setLoggedIn(false);
   }

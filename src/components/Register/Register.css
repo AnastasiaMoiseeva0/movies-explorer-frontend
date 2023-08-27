@@ -88,6 +88,7 @@
 }
 
 .register__button_disabled {
+  opacity: 1;
   color: #c2c2c2;
   background-color: #f8f8f8;
 }

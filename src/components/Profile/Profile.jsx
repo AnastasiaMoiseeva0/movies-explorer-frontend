@@ -9,6 +9,7 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 function Profile({ onSignOut, onUpdateUser, isError }) {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfile, setEditProfile] = useState(false);
+  const [ isLoading, setIsLoading] = useState(false);
   const { handleChange, values, invalidState, isInvalid } = useForm({
     name: currentUser.name,
     email: currentUser.email,
@@ -17,19 +18,20 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-
     if(isInvalid(invalidState)) {
       return;
     }
-
     setErrorMessage(null);
-
+    setIsLoading(true);
     onUpdateUser({
       name: values.name,
       email: values.email,
     }).catch(() => {
       setErrorMessage('При обновлении профиля произошла ошибка');
-    });
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });;
   }, [invalidState, isInvalid, onUpdateUser, values])
 
   function handleEditProfile() {
@@ -75,7 +77,7 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
                   type="email"
                   required
                   name="email"
-                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                  pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+[\.][a-zA-Z]{2,}$"
                   value={values.email}
                   validationMessage={invalidState.email}
                   disabled={!isEditProfile}
@@ -93,13 +95,14 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
                 ) : null}
                 <Button
                   className={`profile__save-button ${
-                    isInvalid(invalidState)
+                    isInvalid(invalidState) || isLoading 
                       ? "profile__save-button_disabled"
                       : ""
                   }`}
                   text="Сохранить"
                   colorButton="blue"
                   type="submit"
+                  disabled={isInvalid(invalidState) || isLoading}
                 />
               </div>
             ) : (

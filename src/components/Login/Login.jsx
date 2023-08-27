@@ -12,6 +12,7 @@ function Login({ handleLogin }) {
     {}
   );
   const [errorMessage, setErrorMessage] = useState(null);
+  const [ isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ function Login({ handleLogin }) {
     if (!values.email || !values.password) {
       return;
     }
-
+    setIsLoading(true);
     handleLogin(values.password, values.email)
       .then(() => {
         setValues({ password: "", email: "" });
@@ -28,6 +29,8 @@ function Login({ handleLogin }) {
       })
       .catch((error) => {
         setErrorMessage('При аутентификации произошла ошибка');
+      }).finally(() => {
+        setIsLoading(false);
       });
   }
 
@@ -41,7 +44,7 @@ function Login({ handleLogin }) {
           type="email"
           name="email"
           isValidate={false}
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+[\.][a-zA-Z]{2,}$"
           value={values.email || ""}
           validationMessage={invalidState.email}
           onChange={handleChange}
@@ -62,11 +65,12 @@ function Login({ handleLogin }) {
           ></ErrorMessage>
           <Button
             className={`register__button ${
-              isInvalid(invalidState) ? "register__button_disabled" : ""
+              isInvalid(invalidState) || isLoading ? "register__button_disabled" : ""
             }`}
             text="Войти"
             colorButton="blue"
             type={"submit"}
+            disabled={isInvalid(invalidState) || isLoading}
           />
         </div>
         <div className="register__signin">

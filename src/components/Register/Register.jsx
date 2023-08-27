@@ -11,11 +11,13 @@ import ErrorMessage from '../ErrorMessage/ErrorMessage.jsx'
 function Register({ handleLogin }) {
   const { values, handleChange, invalidState, isInvalid } = useForm({});
   const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   function onRegister(event) {
     event.preventDefault();
     if ((values.name, values.email, values.password)) {
+      setIsLoading(true);
       auth
         .register(values.name, values.email, values.password)
         .then(() => {
@@ -26,6 +28,9 @@ function Register({ handleLogin }) {
         })
         .catch(() => {
           setErrorMessage('При регистрации произошла ошибка')
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   }
@@ -50,7 +55,7 @@ function Register({ handleLogin }) {
             text="E-mail"
             type="email"
             name="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            pattern="[a-zA-Z0-9\._%\+\-]+@[a-zA-Z0-9\.\-]+[\.][a-zA-Z]{2,}$"
             validationMessage={invalidState.email}
             onChange={handleChange}
             value={values.email || ''}
@@ -67,11 +72,12 @@ function Register({ handleLogin }) {
             <ErrorMessage message={errorMessage} className='register__error' />
             <Button
               className={`register__button ${
-                isInvalid(invalidState) ? "register__button_disabled" : ""
+                isInvalid(invalidState) || isLoading ? "register__button_disabled" : ""
               }`}
               colorButton="blue"
               text="Зарегистрироваться"
               type={'submit'}
+              disabled={isInvalid(invalidState) || isLoading}
             />
           </div>
           <div className="register__signin">
