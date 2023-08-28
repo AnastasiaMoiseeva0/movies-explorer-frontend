@@ -20,10 +20,10 @@ function Movies({ savedMovies, handleSaveMovie, handleDeleteMovie  }) {
         .then((movies) => {
           window.localStorage.setItem('movies', JSON.stringify(movies));
           return movies;
-        });
+        })
+        .catch((error) => {console.log(error)});
     },
     initialFilms: JSON.parse(window.localStorage.getItem('movies')),
-    
   });
 
   return (

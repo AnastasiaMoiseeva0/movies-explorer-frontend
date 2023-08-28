@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { SHORT_MOVIE } from "../utils/constants";
 
 export function useSearch({
   loadFilmsCallback,
   initialFilms,
   skipFirstSearch,
 }) {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState(initialFilms || null);
   const [search, setSearch] = useState(null);
   const [activeCheckbox, setActiveCheckbox] = useState(null);
   const [filteredMovies, setFiltredMovies] = useState([]);
@@ -56,7 +57,7 @@ export function useSearch({
       }
       if (activeCheckbox) {
         filteredMovies = filteredMovies.filter((movie) => {
-          return activeCheckbox ? movie.duration <= 40 : true;
+          return activeCheckbox ? movie.duration <= SHORT_MOVIE : true;
         });
       }
     }

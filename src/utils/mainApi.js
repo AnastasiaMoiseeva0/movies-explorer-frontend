@@ -1,4 +1,5 @@
 import request from "./utils";
+import { MAIN_API_URL } from "./constants";
 
 class MainApi {
   constructor({ baseUrl, headers }) {
@@ -54,7 +55,7 @@ class MainApi {
 }
 
 const mainApi = new MainApi({
-  baseUrl: "https://api.amoiseeva.students.nomoredomains.sbs",
+  baseUrl: MAIN_API_URL,
   headers: {
     "Content-Type": "application/json",
   },

@@ -5,8 +5,9 @@ import Button from "../Button/Button";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useForm } from "../../hooks/useForm.js";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import SuccessfulMessage from "../SuccessfulMessage/SuccessfulMessage";
 
-function Profile({ onSignOut, onUpdateUser, isError }) {
+function Profile({ onSignOut, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
   const [isEditProfile, setEditProfile] = useState(false);
   const [ isLoading, setIsLoading] = useState(false);
@@ -15,6 +16,7 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
     email: currentUser.email,
   });
   const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ successfulMessage, setSuccessfulMessage ] = useState(null);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -22,17 +24,25 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
       return;
     }
     setErrorMessage(null);
+    setSuccessfulMessage(null);
     setIsLoading(true);
     onUpdateUser({
       name: values.name,
       email: values.email,
-    }).catch(() => {
+    }).then(() => {
+      setSuccessfulMessage('Профиль успешно обновлен!');
+    })
+    .catch(() => {
       setErrorMessage('При обновлении профиля произошла ошибка');
     })
     .finally(() => {
       setIsLoading(false);
     });;
-  }, [invalidState, isInvalid, onUpdateUser, values])
+  }, [invalidState, isInvalid, onUpdateUser, values]);
+
+  const isSubmitDisabled = useCallback(() => {
+    return isInvalid(invalidState) || isLoading || (values.name === currentUser.name && values.email === currentUser.email)
+  }, [isInvalid, invalidState, isLoading, values, currentUser]);
 
   function handleEditProfile() {
     setEditProfile(true);
@@ -91,18 +101,21 @@ function Profile({ onSignOut, onUpdateUser, isError }) {
             {isEditProfile ? (
               <div className="profile__list">
                 {errorMessage ? (
-                  <ErrorMessage message={errorMessage} className='profile__error' />
+                  <ErrorMessage message={errorMessage} className='profile__message' />
+                ) : null}
+                {successfulMessage ? (
+                  <SuccessfulMessage message={successfulMessage} className='profile__message' />
                 ) : null}
                 <Button
                   className={`profile__save-button ${
-                    isInvalid(invalidState) || isLoading 
+                    isSubmitDisabled()
                       ? "profile__save-button_disabled"
                       : ""
                   }`}
                   text="Сохранить"
                   colorButton="blue"
                   type="submit"
-                  disabled={isInvalid(invalidState) || isLoading}
+                  disabled={isSubmitDisabled()}
                 />
               </div>
             ) : (

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import ProtectedSigninUserRoute from "../ProtectedSigninUserRoute/ProtectedSigninUserRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import Main from "../Main/Main";
@@ -20,6 +21,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [savedMovies, setSavedMovies] = useState([]);
+  const [savingMovies, setSavingMovies] = useState([]);
   const navigate = useNavigate();
 
   const loadSavedFilms = useCallback(() => {
@@ -33,45 +35,42 @@ function App() {
       });
   }, []);
 
-  const handleSaveMovie = useCallback((movie) => {
-    mainApi
-      .saveMovies(movie)
-      .then(() => {
-        loadSavedFilms();
-      })
-      .catch((err) => err);
-  }, [loadSavedFilms])
-
   const loadUserData = useCallback(() => {
     auth
-        .getCurrentUser()
-        .then((res) => {
-          if (res) {
-            const userData = {
-              name: res.data.name,
-              email: res.data.email,
-            };
-            setCurrentUser(userData);
-            setLoggedIn(true);
-            loadSavedFilms();
-            navigate("/movies", { replace: true });
-          }
-        })
-        .catch((e) => {
-          console.log(e);
-          setLoggedIn(false);
-        });
-  }, [loadSavedFilms])
-
-  const handleLogin = useCallback((password, email) => {
-    return auth
-      .authorize(password, email)
-      .then((data) => {
-        if (data.token) {
-          loadUserData();
+      .getCurrentUser()
+      .then((res) => {
+        if (res) {
+          const userData = {
+            name: res.data.name,
+            email: res.data.email,
+          };
+          setCurrentUser(userData);
+          setLoggedIn(true);
+          loadSavedFilms();
+          navigate("/movies", { replace: true });
         }
       })
-  }, [loadUserData])
+      .catch((e) => {
+        console.log(e);
+        setLoggedIn(false);
+      });
+  }, [loadSavedFilms]);
+
+  const handleLogin = useCallback(
+    (password, email) => {
+      return auth
+        .authorize(password, email)
+        .then((data) => {
+          if (data.token) {
+            loadUserData();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [loadUserData]
+  );
 
   useEffect(() => {
     if (!loggedIn) {
@@ -79,35 +78,85 @@ function App() {
     }
   }, [loggedIn, loadUserData]);
 
-  function onSignOut() {
-    localStorage.clear();
-    
-    navigate("/");
-    setLoggedIn(false);
-  }
+  const handleSaveMovie = useCallback(
+    (movie) => {
+      setSavingMovies([...savingMovies, movie.movieId]);
+      mainApi
+        .saveMovies(movie)
+        .then(() => {
+          setSavedMovies([...savedMovies, movie]);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setSavingMovies(savingMovies.filter((m) => m === movie.movieId));
+        });
+    },
+    [savingMovies, savedMovies]
+  );
 
-  const handleDeleteMovie = useCallback((id) => {
-    mainApi
-      .deleteMovie(id)
-      .then(() => {
-        loadSavedFilms();
-      })
-      .catch((err) => err);
-  }, []);
+  const handleDeleteMovie = useCallback(
+    (id) => {
+      setSavingMovies([...savingMovies, id]);
+      mainApi
+        .deleteMovie(id)
+        .then(() => {
+          setSavedMovies(savedMovies.filter((movie) => movie.movieId === id));
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(() => {
+          setSavingMovies(savingMovies.filter((m) => m === id));
+        });
+    },
+    [savingMovies, savedMovies]
+  );
 
   function handleUpdateUser(userInfo) {
     return mainApi
       .setUserInfo(userInfo)
-      .then((user) => setCurrentUser(user))
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  function onSignOut() {
+    localStorage.clear();
+    navigate("/");
+    setLoggedIn(false);
+    setCurrentUser(null);
+    setSavedMovies([]);
+    setSavingMovies([]);
   }
 
   return (
-    <AppContext.Provider>
+    <AppContext.Provider value={savingMovies}>
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/signup" element={<Register handleLogin={handleLogin} />} />
-          <Route path="/signin" element={<Login handleLogin={handleLogin} />} />
+          <Route
+            path="/signup"
+            element={
+              <ProtectedSigninUserRoute
+                loggedIn={loggedIn}
+                element={<Register handleLogin={handleLogin} />}
+              />
+            }
+          />
+          <Route
+            path="/signin"
+            element={
+              <ProtectedSigninUserRoute
+                loggedIn={loggedIn}
+                element={<Login handleLogin={handleLogin} />}
+              />
+            }
+          />
           <Route
             path="/movies"
             element={

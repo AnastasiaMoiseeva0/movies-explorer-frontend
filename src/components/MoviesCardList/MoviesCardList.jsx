@@ -3,6 +3,16 @@ import useDebouncedFunction from "../../hooks/useDebouncedFunction";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import Button from "../Button/Button";
+import {
+  MAX_WINDOW_SIZE,
+  MEDIUM_WINDOW_SIZE,
+  MIN_WINDOW_SIZE,
+  CARDS_COUNT_MAX_WINDOW_SIZE,
+  CARDS_COUNT_MIN_WINDOW_SIZE,
+  CARDS_NEXT_COUNT_MAX_WINDOW_SIZE,
+  CARDS_NEXT_COUNT_MEDIUM_WINDOW_SIZE,
+  CARDS_NEXT_COUNT_MIN_WINDOW_SIZE,
+} from "../../utils/constants";
 
 function MoviesCardList({
   canDeleteMovie,
@@ -13,7 +23,7 @@ function MoviesCardList({
   handleDeleteMovie,
   isError,
   isEmpty,
-  withMoreButton
+  withMoreButton,
 }) {
   const [visibleCards, setVisibleCards] = useState([]);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -27,31 +37,38 @@ function MoviesCardList({
   }, [filtredMovies]);
 
   function getInitialRows(windowWidth) {
-    if (windowWidth >= 1280) {
-      return 4;
-    } else if (windowWidth >= 768) {
-      return 4;
-    } else if (windowWidth >= 320) {
-      return 5;
+    if (windowWidth >= MAX_WINDOW_SIZE) {
+      return CARDS_COUNT_MAX_WINDOW_SIZE;
+    } else if (windowWidth >= MEDIUM_WINDOW_SIZE) {
+      return CARDS_COUNT_MAX_WINDOW_SIZE;
+    } else if (windowWidth >= MIN_WINDOW_SIZE) {
+      return CARDS_COUNT_MIN_WINDOW_SIZE;
     }
   }
 
   function getItemsInRow(windowWidth) {
-    if (windowWidth >= 1280) {
-      return 3;
-    } else if (windowWidth >= 768) {
-      return 2;
-    } else if (windowWidth >= 320) {
-      return 1;
+    if (windowWidth >= MAX_WINDOW_SIZE) {
+      return CARDS_NEXT_COUNT_MAX_WINDOW_SIZE;
+    } else if (windowWidth >= MEDIUM_WINDOW_SIZE) {
+      return CARDS_NEXT_COUNT_MEDIUM_WINDOW_SIZE;
+    } else if (windowWidth >= MIN_WINDOW_SIZE) {
+      return CARDS_NEXT_COUNT_MIN_WINDOW_SIZE;
     }
   }
 
   useEffect(() => {
-    setVisibleCards( withMoreButton ? filtredMovies.slice(0, itemsInRow * initialRows) : filtredMovies);
+    setVisibleCards(
+      withMoreButton
+        ? filtredMovies.slice(0, itemsInRow * initialRows)
+        : filtredMovies
+    );
   }, [filtredMovies, itemsInRow, initialRows, withMoreButton]);
 
   const onMoreClick = useCallback(() => {
-    const itemsToAdd = windowWidth >= 1280 ? 3 : 2;
+    const itemsToAdd =
+      windowWidth >= MAX_WINDOW_SIZE
+        ? CARDS_NEXT_COUNT_MAX_WINDOW_SIZE
+        : CARDS_NEXT_COUNT_MEDIUM_WINDOW_SIZE;
 
     setVisibleCards(filtredMovies.slice(0, visibleCards.length + itemsToAdd));
   }, [windowWidth, filtredMovies, visibleCards]);
@@ -67,12 +84,14 @@ function MoviesCardList({
 
   return (
     <section className="movies">
-      {isError ?  (
+      {isError ? (
         <p className="movies__search">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз
         </p>
-      ) : !isLoading && isEmpty ? (<p className="movies__search">Ничего не найдено</p>) : null}
+      ) : !isLoading && isEmpty ? (
+        <p className="movies__search">Ничего не найдено</p>
+      ) : null}
       <div className="movies__list">
         {visibleCards.map((movie) => (
           <MoviesCard
@@ -83,9 +102,13 @@ function MoviesCardList({
             )}
             canDeleteMovie={canDeleteMovie}
             handleSaveMovie={handleSaveMovie}
-            handleDeleteMovie={(movie) => handleDeleteMovie(savedMovies.find(
-              (savedMovie) => savedMovie.movieId === movie.movieId
-            )?._id)}
+            handleDeleteMovie={(movie) =>
+              handleDeleteMovie(
+                savedMovies.find(
+                  (savedMovie) => savedMovie.movieId === movie.movieId
+                )?._id
+              )
+            }
           />
         ))}
       </div>

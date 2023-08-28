@@ -166,7 +166,7 @@
   opacity: 1;
 }
 
-.profile__error {
+.profile__message {
   margin: 0;
   padding-bottom: 20px;
   text-align: center;

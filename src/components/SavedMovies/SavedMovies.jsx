@@ -14,6 +14,7 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     skipFirstSearch: true,
   });
 
+  
   useEffect(() => {
     setMovies(savedMovies);
   }, [setMovies, savedMovies])
@@ -22,7 +23,7 @@ function SavedMovies({ savedMovies, handleDeleteMovie }) {
     <>
       <Header isAuthorization={true} />
       <main>
-        <SearchForm onSearch={doSearch} storageKey='savedMovies' />
+        <SearchForm onSearch={doSearch} />
         {isLoading ? (
           <Preloader />
         ) : (

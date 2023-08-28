@@ -1,8 +1,10 @@
+import { MOVIES_IMAGE_URL } from "./constants";
+
 export const mapToSavedMovies = ({ id, created_at, updated_at, ...movie }) => {
   return {
     ...movie,
-    thumbnail: `https://api.nomoreparties.co${movie.image.url}`,
-    image: `https://api.nomoreparties.co${movie.image.url}`,
+    thumbnail: `${MOVIES_IMAGE_URL}${movie.image.url}`,
+    image: `${MOVIES_IMAGE_URL}${movie.image.url}`,
     movieId: id,
   };
 };

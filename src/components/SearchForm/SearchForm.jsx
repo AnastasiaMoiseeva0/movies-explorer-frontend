@@ -8,10 +8,10 @@ import { useForm } from "../../hooks/useForm.js";
 
 function SearchForm({ onSearch, storageKey }) {
   const [search, setSearch] = useState(
-    window.localStorage.getItem(`${storageKey}_search`)
+    storageKey ? window.localStorage.getItem(`${storageKey}_search`) : ''
   );
   const [shortFilmCheck, setShortFilmCheck] = useState(
-    JSON.parse(window.localStorage.getItem(`${storageKey}_shortFilmSearch`))
+    storageKey ? JSON.parse(window.localStorage.getItem(`${storageKey}_shortFilmSearch`)) : false
   );
   const { isInvalid, handleChange, validate } = useForm({});
 
