@@ -77,6 +77,14 @@ function MoviesCardList({
     debouncedWindowWidth(window.innerWidth);
   }, [debouncedWindowWidth]);
 
+  const deleteMovie = useCallback((movie) => {
+    handleDeleteMovie(
+      savedMovies.find(
+        (savedMovie) => savedMovie.movieId === movie.movieId
+      )
+    )
+  }, [savedMovies])
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -103,11 +111,7 @@ function MoviesCardList({
             canDeleteMovie={canDeleteMovie}
             handleSaveMovie={handleSaveMovie}
             handleDeleteMovie={(movie) =>
-              handleDeleteMovie(
-                savedMovies.find(
-                  (savedMovie) => savedMovie.movieId === movie.movieId
-                )?._id
-              )
+              deleteMovie(movie)
             }
           />
         ))}

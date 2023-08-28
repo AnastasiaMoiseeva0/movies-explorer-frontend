@@ -17,8 +17,7 @@ function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleS
   }
 
   const isSavingMovie = useCallback(() => {
-    console.log(savingMovies);
-    return savingMovies.some((savingMovies) => savingMovies.movieId === movie.movieId)
+    return savingMovies.some((savingMovies) => savingMovies === movie.movieId)
   }, [savingMovies, movie.movieId]);
 
   return (

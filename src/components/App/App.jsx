@@ -83,32 +83,32 @@ function App() {
       setSavingMovies([...savingMovies, movie.movieId]);
       mainApi
         .saveMovies(movie)
-        .then(() => {
-          setSavedMovies([...savedMovies, movie]);
+        .then((savedMovie) => {
+          setSavedMovies([...savedMovies, savedMovie]);
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          setSavingMovies(savingMovies.filter((m) => m === movie.movieId));
+          setSavingMovies(savingMovies.filter((m) => m !== movie.movieId));
         });
     },
     [savingMovies, savedMovies]
   );
 
   const handleDeleteMovie = useCallback(
-    (id) => {
-      setSavingMovies([...savingMovies, id]);
+    (movie) => {
+      setSavingMovies([...savingMovies, movie.movieId]);
       mainApi
-        .deleteMovie(id)
+        .deleteMovie(movie._id)
         .then(() => {
-          setSavedMovies(savedMovies.filter((movie) => movie.movieId === id));
+          setSavedMovies(savedMovies.filter((m) => m._id !== movie._id));
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(() => {
-          setSavingMovies(savingMovies.filter((m) => m === id));
+          setSavingMovies(savingMovies.filter((m) => m !== movie.movieId));
         });
     },
     [savingMovies, savedMovies]
