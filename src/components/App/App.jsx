@@ -138,7 +138,7 @@ function App() {
     <AppContext.Provider value={savingMovies}>
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main loggedIn={loggedIn}/>} />
           <Route
             path="/signup"
             element={

@@ -9,7 +9,7 @@ import moviesApi from "../../utils/moviesApi";
 import { mapToSavedMovies } from "../../utils/mappers";
 
 
-function Movies({ savedMovies, handleSaveMovie, handleDeleteMovie  }) {
+function Movies({ savedMovies, handleSaveMovie, handleDeleteMovie }) {
   const { doSearch, filteredMovies, isLoading, isError, isEmpty } = useSearch({
     loadFilmsCallback: () => {
       return moviesApi

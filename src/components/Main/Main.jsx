@@ -8,14 +8,14 @@ import { useRef } from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
-function Main() {
+function Main({loggedIn}) {
   const aboutProjectRef = useRef(null);
   const techsRef = useRef(null);
   const aboutMeRef = useRef(null);
 
   return (
     <>
-      <Header isAuthorization={false} />
+      <Header isAuthorization={loggedIn} />
       <main className="main">
         <Promo
           onProjectClick={() => {
