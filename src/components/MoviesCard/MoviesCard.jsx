@@ -1,21 +1,45 @@
+import { useContext } from "react";
 import "./MoviesCard.css";
-import movieImg from "../../images/movie-img.jpg";
 import Button from "../Button/Button";
+import { AppContext } from "../../contexts/AppContext";
+import { useCallback } from "react";
+import { MINUTES_IN_HOUR } from "../../utils/constants";
 
-function MoviesCard({ isSaved, canDeleteMovie }) {
+function MoviesCard({ movie, isSaved, canDeleteMovie, handleDeleteMovie, handleSaveMovie }) {
+  const savingMovies = useContext(AppContext);
+
+  function getDuration() {
+    if (movie.duration < MINUTES_IN_HOUR) {
+      return `${movie.duration % MINUTES_IN_HOUR}м`;
+    } else {
+      return `${Math.floor(movie.duration / MINUTES_IN_HOUR)}ч ${movie.duration % MINUTES_IN_HOUR}м`;
+    }
+  }
+
+  const isSavingMovie = useCallback(() => {
+    return savingMovies.some((savingMovies) => savingMovies === movie.movieId)
+  }, [savingMovies, movie.movieId]);
+
   return (
     <article className="movie">
-      <img src={movieImg} alt="Изображение фильма" className="movie__img" />
+      <div className="movie__link">
+      <a href={movie.trailerLink} target="Трейлер фильма">
+            <div className="movie__img"
+            style={{
+              backgroundImage: `url(${movie.image})`,
+            }}></div>
+      </a>
       {canDeleteMovie ? (
-        <Button className="movie__delete-button" iconButton={true} />
+        <Button className="movie__delete-button" iconButton={true} onClick={() => handleDeleteMovie(movie)} disabled={isSavingMovie()}/>
       ) : isSaved ? (
-        <Button text="Сохранить" className="movie__save-button" />
+        <Button className="movie__saved-button" iconButton={true} onClick={() => handleDeleteMovie(movie)} disabled={isSavingMovie()}/>
       ) : (
-        <Button className="movie__saved-button" iconButton={true} />
+        <Button text="Сохранить" className="movie__save-button" onClick={() => handleSaveMovie(movie)} disabled={isSavingMovie()}/>
       )}
+      </div>
       <div className="movie__caption">
-        <h2 className="movie__title">Книготорговцы</h2>
-        <p className="movie__time">1ч 17м</p>
+        <h2 className="movie__title">{movie.nameRU}</h2>
+        <p className="movie__time">{getDuration()}</p>
       </div>
     </article>
   );

@@ -1,0 +1,7 @@
+.error-message {
+  display: block;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #ee3465;
+}

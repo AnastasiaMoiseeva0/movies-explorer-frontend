@@ -1,22 +1,27 @@
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./Input.css";
 
-function Input({ text, type, errorName, isValidate, name, minlength, maxlength }) {
+function Input({ text, type, name, minLength, maxLength, value, onChange, validationMessage, pattern }) {
+
   return (
     <div className="input">
       <p className="input__subtitle">{text}</p>
       <input
         className={`input__field ${
-          isValidate ? "input__field_type_red" : ""
+          validationMessage ? "input__field_type_red" : ""
         }`}
         type={type}
         name={name}
-        minlength={minlength}
-        maxlength={maxlength}
+        minLength={minLength}
+        maxLength={maxLength}
+        value={value}
+        pattern={pattern}
         required
+        onChange={onChange}
       />
-      <span className={`input__error ${
-          isValidate ? "input__error_active" : ""
-        }`}>{errorName}</span>
+      <ErrorMessage message={validationMessage} className={`input__error ${
+          validationMessage ? "input__error_active" : ""
+        }`}></ErrorMessage>
     </div>
   );
 }

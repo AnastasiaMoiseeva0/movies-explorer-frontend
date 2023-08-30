@@ -45,14 +45,7 @@
   color: #ee3465;
 }
 
-.input__error {
-  margin: 0;
-  font-family: Inter, Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  color: #ee3465;
-}
-
 .input__error_active {
-  padding-top: 12px;
+  margin-top: 12px;
+  max-width: 350px;
 }
