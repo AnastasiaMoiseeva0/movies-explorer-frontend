@@ -1,5 +1,5 @@
 const MOVIES_API_URL = "https://api.nomoreparties.co/beatfilm-movies";
-const MAIN_API_URL = "https://api.amoiseeva.students.nomoredomains.sbs";
+const MAIN_API_URL = "https://movies-explorer-api-vpun.onrender.com";
 const MOVIES_IMAGE_URL = "https://api.nomoreparties.co";
 
 const SHORT_MOVIE = 40;
