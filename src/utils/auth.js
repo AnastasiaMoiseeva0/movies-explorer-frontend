@@ -1,5 +1,5 @@
 import request from "./utils";
-export const BASE_URL = "https://api.amoiseeva.students.nomoredomains.sbs";
+export const BASE_URL = "https://movies-explorer-api-vpun.onrender.com";
 
 export const register = (name, email, password) => {
   return request(`${BASE_URL}/signup`, {
