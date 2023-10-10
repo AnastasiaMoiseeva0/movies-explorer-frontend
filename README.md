@@ -33,4 +33,4 @@
 IP 158.160.80.42
 
 Backend https://movies-explorer-api-vpun.onrender.com
-Frontend https://amoiseeva.students.nomoredomainsicu.ru
+Frontend https://anastasiamoiseeva0.github.io/movies-explorer-frontend/
